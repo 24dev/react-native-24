@@ -1,0 +1,30 @@
+{
+  "name": "react-native-24",
+  "version": "0.0.1",
+  "description": "A clean, modern React Native component library",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/24dev/react-native-24.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/24dev/react-native-24/issues"
+  },
+  "homepage": "https://github.com/24dev/react-native-24#readme",
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "react": "^16.9.0",
+    "typescript": "^3.6.2"
+  }
+}
