@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="assets/bella.png?raw=true" width="250" align="center" alt="react bella logo">
+  <img src="assets/rn-24.png?raw=true" width="250" align="center" alt="react 24 logo">
 </h1>
 
 <div align="center">
@@ -15,26 +15,29 @@ Made with 🔥 in the UK.
 npm install react-native-24
 ```
 
+or
+
+```sh
+yarn add react-native-24
+```
+
 ## 🚀 Usage
 
 Here is a quick example to get you started, **it's all you need**:
 
 ```jsx
 import React from "react";
-import ReactDOM from "react-dom";
 import { Text, Flex } from "react-native-24";
 
 function App() {
   return (
     <Flex justifyContent="center">
       <Text type="h1" color="blue">
-        Bella
+        24
       </Text>
     </Flex>
   );
 }
-
-ReactDOM.render(<App />, document.querySelector("#app"));
 ```
 
 ## 📚 Components

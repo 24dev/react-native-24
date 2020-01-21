@@ -1,7 +1,7 @@
-import React from 'react';
-import { ViewStyle } from 'react-native';
+import React from "react";
+import { ViewStyle } from "react-native";
 declare const Flex: React.FC<{
-    justifyContent?: 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end' | 'center' | 'space-around';
+    justifyContent?: "space-between" | "space-evenly" | "flex-start" | "flex-end" | "center" | "space-around";
     children: any;
     style: ViewStyle;
 }>;

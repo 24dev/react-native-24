@@ -56,14 +56,16 @@ const Button: React.FC<{
   style: ViewStyle;
   onPress: () => void;
   disabled?: boolean;
-}> = ({
-  feedback = "opacity",
-  theme = "invisible",
-  children,
-  style,
-  onPress,
-  disabled = false
-}) => {
+}> = props => {
+  const {
+    feedback = "opacity",
+    theme = "invisible",
+    children,
+    style,
+    onPress,
+    disabled = false
+  } = props;
+
   const Tag = getTag(feedback);
   return (
     <Tag

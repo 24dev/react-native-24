@@ -49,25 +49,22 @@ const Wrap: React.FC<{
   numberOfLines?: number;
   children: any;
   style?: TextStyle;
-}> = ({
-  size = "p",
-  children,
-  style = {},
-  camel = false,
-  underlined = false,
-  numberOfLines = 0,
-  bold = false,
-  skeletonLoading = false,
-  color = "#000"
-}) => {
+}> = props => {
+  const {
+    size = "p",
+    children,
+    style = {},
+    camel = false,
+    underlined = false,
+    numberOfLines = 0,
+    bold = false,
+    skeletonLoading = false,
+    color = "#000"
+  } = props;
   let text = children;
-  const props: any = {};
   let fontWeight = {};
   if (camel) {
     text = text.slice(0, 1).toUpperCase() + text.slice(1, text.length);
-  }
-  if (numberOfLines) {
-    props.numberOfLines = numberOfLines;
   }
   if (bold) {
     fontWeight = {

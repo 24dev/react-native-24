@@ -1,5 +1,5 @@
-import React from 'react';
-import { ViewStyle } from 'react-native';
+import React from "react";
+import { ViewStyle } from "react-native";
 declare const Space: React.FC<{
     size?: string;
     children: any;
