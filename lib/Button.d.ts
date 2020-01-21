@@ -1,13 +1,14 @@
 import React from "react";
+import { ViewStyle } from "react-native";
+declare type FeedbackType = "opacity" | "highlight" | "none";
+declare type ThemeType = "primary" | "outline" | "invisible";
 declare const Button: React.FC<{
-    theme?: string;
+    feedback?: FeedbackType;
+    theme?: ThemeType;
     children: any;
-    style: any;
-    onClick: any;
+    style: ViewStyle;
+    onPress: () => void;
     disabled?: boolean;
-    className?: string;
-    form?: string;
-    type?: "button" | "submit" | "reset" | undefined;
 }>;
 export default Button;
 //# sourceMappingURL=Button.d.ts.map

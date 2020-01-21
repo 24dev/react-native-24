@@ -1,12 +1,16 @@
-import React from 'react';
-declare const Text: React.FC<{
-    children: React.ReactChild;
-    type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+import React from "react";
+import { TextStyle } from "react-native";
+declare type SizeType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+declare const Wrap: React.FC<{
+    size?: SizeType;
     color?: string;
-    style?: any;
     bold?: boolean;
-    caps?: boolean;
-    capitalise?: boolean;
+    skeletonLoading?: boolean;
+    camel?: boolean;
+    underlined?: boolean;
+    numberOfLines?: number;
+    children: any;
+    style?: TextStyle;
 }>;
-export default Text;
+export default Wrap;
 //# sourceMappingURL=Text.d.ts.map
