@@ -1,33 +1,36 @@
 import React from "react";
-import {TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
+import {
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  ViewStyle
+} from "react-native";
 
-type FeedbackType = 'opacity' | 'highlight' | 'none'
+type FeedbackType = "opacity" | "highlight" | "none";
+type ThemeType = "primary" | "outline" | "invisible";
 
 const themes: any = {
   primary: {
     border: 0,
     outline: "none",
-    padding: "10px 30px",
-    background: "#4a90e2",
-    borderRadius: "3px",
-    cursor: "pointer",
-    "&:hover": {
-      background: "rgb(42, 101, 171)"
-    }
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    backgroundColor: "#4a90e2",
+    borderRadius: 3
   },
   outline: {
     outline: "none",
     background: "transparent",
-    padding: "10px 30px",
-    border: "1px solid rgb(211, 211, 211)",
-    borderRadius: "3px",
-    cursor: "pointer"
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderColor: "rgb(211, 211, 211)",
+    borderWidth: 1,
+    borderRadius: 3
   },
   invisible: {
     border: 0,
     outline: "none",
-    background: "transparent",
-    cursor: "pointer"
+    background: "transparent"
   },
   disabled: {
     opacity: 0.75,
@@ -37,37 +40,30 @@ const themes: any = {
 
 const getTag = (feedback: FeedbackType) => {
   switch (feedback) {
-    case 'opacity':
+    case "opacity":
       return TouchableOpacity;
-      case 'highlight':
-          return TouchableHighlight;
-          case 'none':
-              return TouchableWithoutFeedback;
+    case "highlight":
+      return TouchableHighlight;
+    case "none":
+      return TouchableWithoutFeedback;
   }
-}
+};
 
 const Button: React.FC<{
-  feedback?: FeedbackType,
-  theme?: string;
+  feedback?: FeedbackType;
+  theme?: ThemeType;
   children: any;
-  style: any;
-  onClick: any;
+  style: ViewStyle;
+  onPress: () => void;
   disabled?: boolean;
-  className?: string;
-  form?: string;
-  type?: "button" | "submit" | "reset" | undefined;
 }> = ({
-  feedback = 'opacity',
+  feedback = "opacity",
   theme = "invisible",
-  type = "button",
   children,
   style,
-  onClick,
-  disabled = false,
-  className = "",
-  form = ""
+  onPress,
+  disabled = false
 }) => {
-
   const Tag = getTag(feedback);
   return (
     <Tag
@@ -76,11 +72,8 @@ const Button: React.FC<{
         ...(disabled ? themes.disabled : {}),
         ...style
       }}
-      type={type}
       disabled={disabled}
-      onClick={onClick}
-      className={className}
-      form={form}
+      onPress={onPress}
     >
       {children}
     </Tag>
