@@ -1,6 +1,7 @@
 import React from 'react';
+import {Text} from 'react-native';
 
-const Text: React.FC<{ 
+const Wrap: React.FC<{ 
   children: React.ReactChild, 
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span', 
   color?: string, 
@@ -22,7 +23,7 @@ const Text: React.FC<{
   const isCaps = {textTransform: 'uppercase'};
   const isCapitalised = {textTransform: 'capitalize'};
   return (
-  <Tag style={{
+  <Text style={{
     color, 
     ...bold ? isBold : {},
     ...caps ? isCaps : {},
@@ -30,8 +31,8 @@ const Text: React.FC<{
     ...style
   }}>
     {children}
-  </Tag>
+  </Text>
   );
 };
 
-export default Text;
+export default Wrap;

@@ -1,28 +1,33 @@
 import React from 'react';
+import {View, ViewStyle} from 'react-native';
 
 const sizes: any = {
-    xs: '2px',
-    sm: '4px', 
-    md: '8px', 
-    lg: '12px',
-    xl: '24px',
-    xxl: '48px',
+    xs: 2,
+    sm: 4, 
+    md: 8, 
+    lg: 12,
+    xl: 24,
+    xxl: 48,
 }
 
-const Space: React.FC<{ size?: string; children: any }> = ({
+const Space: React.FC<{ size?: string; children: any; style: ViewStyle }> = ({
   size = 'md',
-  children
+  children,
+  style
 }) => {
   return (
-    <div
-      style={{
-        height: '1px',
-        width: '1px',
-        margin: sizes[size],
-      }}
+    <View
+      style={[
+        {
+        height: 1,
+        width: 1,
+        margin: sizes[size]
+        },
+        style
+      ]}
     >
       {children}
-    </div>
+    </View>
   );
 };
 

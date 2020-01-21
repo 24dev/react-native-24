@@ -1,12 +1,17 @@
 import React from 'react';
+import {View, ViewStyle} from 'react-native'
 
-const Flex: React.FC<{ justifyContent?: string; children: any, style: any }> = ({
+const Flex: React.FC<{ 
+  justifyContent?: 'space-between' | 'space-evenly' | 'flex-start' | 'flex-end' | 'center' | 'space-around'; 
+  children: any, 
+  style: ViewStyle 
+}> = ({
   justifyContent = 'space-between',
   children,
   style
 }) => {
   return (
-    <div
+    <View
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -15,7 +20,7 @@ const Flex: React.FC<{ justifyContent?: string; children: any, style: any }> = (
       }}
     >
       {children}
-    </div>
+    </View>
   );
 };
 

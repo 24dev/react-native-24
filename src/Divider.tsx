@@ -1,15 +1,18 @@
 import React from 'react';
+import {View, ViewStyle} from 'react-native'
 
-const Divider: React.FC<{ color: string }> = ({
-  color = 'lightgrey'
+const Divider: React.FC<{ color: string, width: string | number, style: ViewStyle }> = ({
+  color = 'lightgrey',
+  width = '100%',
+  style,
 }) => {
   return (
-    <div
-      style={{
-        width: '90%',
-        height: '1px',
+    <View
+      style={[{
+        width,
+        height: 1,
         backgroundColor: color,
-      }}
+      }, style]}
     />
   );
 };

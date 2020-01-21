@@ -1,4 +1,7 @@
 import React from "react";
+import {TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight} from 'react-native';
+
+type FeedbackType = 'opacity' | 'highlight' | 'none'
 
 const themes: any = {
   primary: {
@@ -32,7 +35,19 @@ const themes: any = {
   }
 };
 
+const getTag = (feedback: FeedbackType) => {
+  switch (feedback) {
+    case 'opacity':
+      return TouchableOpacity;
+      case 'highlight':
+          return TouchableHighlight;
+          case 'none':
+              return TouchableWithoutFeedback;
+  }
+}
+
 const Button: React.FC<{
+  feedback?: FeedbackType,
   theme?: string;
   children: any;
   style: any;
@@ -42,6 +57,7 @@ const Button: React.FC<{
   form?: string;
   type?: "button" | "submit" | "reset" | undefined;
 }> = ({
+  feedback = 'opacity',
   theme = "invisible",
   type = "button",
   children,
@@ -51,8 +67,10 @@ const Button: React.FC<{
   className = "",
   form = ""
 }) => {
+
+  const Tag = getTag(feedback);
   return (
-    <button
+    <Tag
       style={{
         ...themes[theme],
         ...(disabled ? themes.disabled : {}),
@@ -65,7 +83,7 @@ const Button: React.FC<{
       form={form}
     >
       {children}
-    </button>
+    </Tag>
   );
 };
 
