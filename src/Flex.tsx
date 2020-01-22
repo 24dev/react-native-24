@@ -10,7 +10,7 @@ const Flex: React.FC<{
     | "center"
     | "space-around";
   children: any;
-  style: ViewStyle;
+  style?: ViewStyle;
 }> = props => {
   const { justifyContent = "space-between", children, style } = props;
   return (

@@ -53,7 +53,7 @@ const Button: React.FC<{
   feedback?: FeedbackType;
   theme?: ThemeType;
   children: any;
-  style: ViewStyle;
+  style?: ViewStyle;
   onPress: () => void;
   disabled?: boolean;
 }> = props => {
@@ -61,7 +61,7 @@ const Button: React.FC<{
     feedback = "opacity",
     theme = "invisible",
     children,
-    style,
+    style = {},
     onPress,
     disabled = false
   } = props;

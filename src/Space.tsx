@@ -12,8 +12,8 @@ const sizes: any = {
 
 const Space: React.FC<{
   size?: string;
-  children: any;
-  style: ViewStyle;
+  children?: any;
+  style?: ViewStyle;
 }> = props => {
   const { size = "md", children, style } = props;
   return (

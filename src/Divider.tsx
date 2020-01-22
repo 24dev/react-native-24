@@ -2,11 +2,11 @@ import React from "react";
 import { View, ViewStyle } from "react-native";
 
 const Divider: React.FC<{
-  color: string;
-  width: string | number;
-  style: ViewStyle;
+  color?: string;
+  width?: string | number;
+  style?: ViewStyle;
 }> = props => {
-  const { color = "lightgrey", width = "100%", style } = props;
+  const { color = "lightgrey", width = "100%", style = {} } = props;
   return (
     <View
       style={[

@@ -45,45 +45,76 @@ function App() {
 <b>Flex</b> (for flexible, dynamic divs)
 
 ```jsx
-<Flex justifyContent>
+<Flex props>
   {...children}
 </Flex>
 
-justifyContent: oneOf(['center', 'flex-start', 'flex-end', 'space-between', 'space-evenly']). Default is 'space-between'.
-children: any
+justifyContent?:
+  | "space-between"
+  | "space-evenly"
+  | "flex-start"
+  | "flex-end"
+  | "center"
+  | "space-around"; Default is 'space-between'.
+children: any;
+style?: ViewStyle;
 ```
 
 <b>Text</b> (for all kinds of text)
 
 ```jsx
-<Text type>
+<Text props>
   {...children}
 </Text>
 
-type: oneOf(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']). Default is 'span'.
 children: any
+size?: oneOf(['p', 'span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']); Default is 'p'.
+color?: string;
+bold?: boolean;
+skeletonLoading?: boolean;
+camel?: boolean;
+underlined?: boolean;
+numberOfLines?: number;
+style?: TextStyle;
 ```
 
 <b>Space</b> (forget margins)
 
 ```jsx
-<Space size>
+<Space props>
   {...children}
 </Space>
 
-size: oneOf(['xs', 'sm', 'md', 'lg', 'xl']). Default is 'md'.
-children: any
+size?: oneOf(['xs', 'sm', 'md', 'lg', 'xl']). Default is 'md';
+children?: any;
+style?: ViewStyle;
 ```
 
 <b>Button</b> (buttons)
 
 ```jsx
-<Button theme>
+<Button props>
   {...children}
 </Button>
 
-theme: oneOf(['primary', 'outline', 'invisible']). Default is 'invisible'.
-children: any
+feedback?: "opacity" | "highlight" | "none"; Default is "opacity".
+theme?: "primary" | "outline" | "invisible"; Default is "invisible".
+children: any;
+style?: ViewStyle;
+onPress: function;
+disabled?: boolean;
+```
+
+<b>Divider</b> (hr)
+
+```jsx
+<Divider props>
+  {...children}
+</Divider>
+
+color?: string;
+width?: string | number;
+style?: ViewStyle;
 ```
 
 ## Roadmap
