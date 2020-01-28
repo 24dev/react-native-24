@@ -17,6 +17,7 @@ const Flex: React.FC<{
     <View
       style={{
         display: "flex",
+        flexDirection: "row",
         alignItems: "center",
         justifyContent,
         ...style
