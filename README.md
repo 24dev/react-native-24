@@ -108,12 +108,20 @@ disabled?: boolean;
 <b>Divider</b> (hr)
 
 ```jsx
-<Divider props>
-  {...children}
-</Divider>
+<Divider props />
 
 color?: string;
 width?: string | number;
+style?: ViewStyle;
+```
+
+<b>Spinner</b> (ActivityIndicator)
+
+```jsx
+<Spinner props />
+
+color?: string;
+size?: number;
 style?: ViewStyle;
 ```
 

@@ -11,35 +11,35 @@ type SizeType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 const sizes = {
   h1: {
     fontSize: 30,
-    fontWeight: 700
+    fontWeight: "700"
   },
   h2: {
     fontSize: 24,
-    fontWeight: 700
+    fontWeight: "700"
   },
   h3: {
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: "500"
   },
   h4: {
     fontSize: 18,
-    fontWeight: 400
+    fontWeight: "400"
   },
   h5: {
     fontSize: 16,
-    fontWeight: 400
+    fontWeight: "400"
   },
   h6: {
     fontSize: 14,
-    fontWeight: 400
+    fontWeight: "400"
   },
   p: {
     fontSize: 14,
-    fontWeight: 300
+    fontWeight: "300"
   }
 };
 
-const Wrap: React.FC<{
+export interface TextProps {
   size?: SizeType;
   color?: string;
   bold?: boolean;
@@ -49,7 +49,9 @@ const Wrap: React.FC<{
   numberOfLines?: number;
   children: any;
   style?: TextStyle;
-}> = props => {
+}
+
+const Wrap: React.FC<TextProps> = props => {
   const {
     size = "p",
     children,
@@ -74,6 +76,7 @@ const Wrap: React.FC<{
   if (skeletonLoading) {
     return (
       <Text
+        {...props}
         style={[
           sizes[size],
           { color },
@@ -81,7 +84,6 @@ const Wrap: React.FC<{
           underlined ? styles.underlined : {},
           fontWeight
         ]}
-        {...props}
       >
         ...
       </Text>
@@ -89,6 +91,7 @@ const Wrap: React.FC<{
   }
   return (
     <Text
+      {...props}
       numberOfLines={numberOfLines}
       style={[
         sizes[size],
@@ -97,7 +100,6 @@ const Wrap: React.FC<{
         underlined ? styles.underlined : {},
         fontWeight
       ]}
-      {...props}
     >
       {text}
     </Text>

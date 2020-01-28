@@ -12,7 +12,7 @@ const Flex: React.FC<{
   children: any;
   style?: ViewStyle;
 }> = props => {
-  const { justifyContent = "space-between", children, style } = props;
+  const { justifyContent = "space-between", children, style = {} } = props;
   return (
     <View
       style={{
