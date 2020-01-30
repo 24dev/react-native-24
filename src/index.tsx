@@ -5,5 +5,16 @@ import Space from "./Space";
 import Divider from "./Divider";
 import Spinner from "./Spinner";
 import Input from "./Input";
+import Avatar from "./Input";
 
-export { Text, TextProps, Flex, Button, Space, Spinner, Input, Divider };
+export {
+  Avatar,
+  Text,
+  TextProps,
+  Flex,
+  Button,
+  Space,
+  Spinner,
+  Input,
+  Divider
+};

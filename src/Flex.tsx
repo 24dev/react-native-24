@@ -9,19 +9,37 @@ const Flex: React.FC<{
     | "flex-end"
     | "center"
     | "space-around";
+  alignItems?:
+    | "space-between"
+    | "center"
+    | "stretch"
+    | "flex-start"
+    | "flex-end"
+    | "baseline"
+    | "initial"
+    | "inherit";
   children: any;
   style?: ViewStyle;
+  vertical?: boolean;
 }> = props => {
-  const { justifyContent = "space-between", children, style = {} } = props;
+  const {
+    justifyContent = "space-between",
+    alignItems = "center",
+    children,
+    vertical = false,
+    style = {}
+  } = props;
   return (
     <View
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent,
-        ...style
-      }}
+      style={
+        {
+          display: "flex",
+          flexDirection: vertical ? "column" : "row",
+          alignItems,
+          justifyContent,
+          ...style
+        } as ViewStyle
+      }
     >
       {children}
     </View>

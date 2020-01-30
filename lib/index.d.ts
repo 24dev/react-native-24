@@ -5,5 +5,6 @@ import Space from "./Space";
 import Divider from "./Divider";
 import Spinner from "./Spinner";
 import Input from "./Input";
-export { Text, TextProps, Flex, Button, Space, Spinner, Input, Divider };
+import Avatar from "./Input";
+export { Avatar, Text, TextProps, Flex, Button, Space, Spinner, Input, Divider };
 //# sourceMappingURL=index.d.ts.map
