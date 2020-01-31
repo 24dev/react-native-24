@@ -79,8 +79,8 @@ const Button: React.FC<{
       : {
           ...themes[theme[0]],
           ...themes[theme[1]],
-          ...themes[theme[0]],
-          ...themes[theme[4]]
+          ...themes[theme[2]],
+          ...themes[theme[3]]
         };
   return (
     <Tag
