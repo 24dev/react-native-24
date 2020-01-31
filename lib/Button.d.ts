@@ -8,7 +8,9 @@ declare const Button: React.FC<{
     theme?: ThemeType;
     children: any;
     style?: ViewStyle;
-    onPress: () => void;
+    onPress?: () => void;
+    onPressIn?: () => void;
+    onPressOut?: () => void;
     disabled?: boolean;
 }>;
 export default Button;

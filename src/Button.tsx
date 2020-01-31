@@ -34,9 +34,11 @@ const themes: any = {
     background: "transparent"
   },
   round: {
-    width: 40,
-    height: 40,
-    borderRadius: 20
+    width: 50,
+    height: 50,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
+    borderRadius: 25
   },
   disabled: {
     opacity: 0.75,
@@ -60,7 +62,9 @@ const Button: React.FC<{
   theme?: ThemeType;
   children: any;
   style?: ViewStyle;
-  onPress: () => void;
+  onPress?: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
   disabled?: boolean;
 }> = props => {
   const {
@@ -68,7 +72,9 @@ const Button: React.FC<{
     theme = "invisible",
     children,
     style = {},
-    onPress,
+    onPress = () => {},
+    onPressIn = () => {},
+    onPressOut = () => {},
     disabled = false
   } = props;
 
@@ -78,9 +84,7 @@ const Button: React.FC<{
       ? themes[theme]
       : {
           ...themes[theme[0]],
-          ...themes[theme[1]],
-          ...themes[theme[2]],
-          ...themes[theme[3]]
+          ...themes[theme[1]]
         };
   return (
     <Tag
@@ -91,6 +95,8 @@ const Button: React.FC<{
       }}
       disabled={disabled}
       onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
     >
       {children}
     </Tag>
