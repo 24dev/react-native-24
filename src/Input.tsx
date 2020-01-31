@@ -8,6 +8,7 @@ const Input: React.FC<{
   onChange?: Function;
   multiline?: boolean;
   editable?: boolean;
+  placeholder?: string;
 }> = props => {
   const {
     height = 40,
@@ -15,7 +16,8 @@ const Input: React.FC<{
     multiline = false,
     value = "",
     onChange = () => {},
-    editable = true
+    editable = true,
+    placeholder = ""
   } = props;
   return (
     <TextInput
@@ -33,6 +35,7 @@ const Input: React.FC<{
       onChangeText={value => onChange(value)}
       {...(value ? value : null)}
       editable={editable}
+      placeholder={placeholder}
     />
   );
 };

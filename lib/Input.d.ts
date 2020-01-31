@@ -7,6 +7,7 @@ declare const Input: React.FC<{
     onChange?: Function;
     multiline?: boolean;
     editable?: boolean;
+    placeholder?: string;
 }>;
 export default Input;
 //# sourceMappingURL=Input.d.ts.map
