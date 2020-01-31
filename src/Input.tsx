@@ -6,8 +6,17 @@ const Input: React.FC<{
   style?: ViewStyle;
   value?: string;
   onChange?: Function;
+  multiline?: boolean;
+  editable?: boolean;
 }> = props => {
-  const { height = 40, style = {}, value = "", onChange = () => {} } = props;
+  const {
+    height = 40,
+    style = {},
+    multiline = false,
+    value = "",
+    onChange = () => {},
+    editable = true
+  } = props;
   return (
     <TextInput
       style={[
@@ -20,8 +29,10 @@ const Input: React.FC<{
         },
         style
       ]}
+      multiline={multiline}
       onChangeText={value => onChange(value)}
-      // value={value}
+      {...(value ? value : null)}
+      editable={editable}
     />
   );
 };
