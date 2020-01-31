@@ -50,14 +50,24 @@ function App() {
 </Flex>
 
 justifyContent?:
-  | "space-between"
-  | "space-evenly"
-  | "flex-start"
-  | "flex-end"
-  | "center"
-  | "space-around"; Default is 'space-between'.
+| "space-between"
+| "space-evenly"
+| "flex-start"
+| "flex-end"
+| "center"
+| "space-around";
+alignItems?:
+| "space-between"
+| "center"
+| "stretch"
+| "flex-start"
+| "flex-end"
+| "baseline"
+| "initial"
+| "inherit";
 children: any;
 style?: ViewStyle;
+vertical?: boolean;
 ```
 
 <b>Text</b> (for all kinds of text)
@@ -78,7 +88,7 @@ numberOfLines?: number;
 style?: TextStyle;
 ```
 
-<b>Space</b> (forget margins)
+<b>Space</b> (handy replacement for margins)
 
 ```jsx
 <Space props>
@@ -97,11 +107,13 @@ style?: ViewStyle;
   {...children}
 </Button>
 
-feedback?: "opacity" | "highlight" | "none"; Default is "opacity".
-theme?: "primary" | "outline" | "invisible"; Default is "invisible".
+feedback?: FeedbackType;
+theme?: ThemeType;
 children: any;
-style?: ViewStyle;
-onPress: function;
+style?: ViewStyle | ViewStyle[];
+onPress?: () => void;
+onPressIn?: () => void;
+onPressOut?: () => void;
 disabled?: boolean;
 ```
 
@@ -125,9 +137,33 @@ size?: number;
 style?: ViewStyle;
 ```
 
+<b>Input</b> (TextInput)
+
+```jsx
+<Input props />
+
+height?: number;
+style?: ViewStyle;
+value?: string;
+onChange?: Function;
+multiline?: boolean;
+editable?: boolean;
+placeholder?: string;
+```
+
+<b>Avatar</b> (for profile/display pictures)
+
+```jsx
+<Avatar props />
+
+source: any;
+style?: ViewStyle;
+size?: "xxs" | "xs" | "sm" | "md" | "lg";
+```
+
 ## Roadmap
 
-Currently in development. Once a complete, stable release is ready, we will announce.
+Currently in active development, and not ready for production projects. Any feedback is welcome.
 
 ## License
 

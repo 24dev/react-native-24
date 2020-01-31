@@ -7,7 +7,7 @@ declare const Button: React.FC<{
     feedback?: FeedbackType;
     theme?: ThemeType;
     children: any;
-    style?: ViewStyle;
+    style?: ViewStyle | ViewStyle[];
     onPress?: () => void;
     onPressIn?: () => void;
     onPressOut?: () => void;

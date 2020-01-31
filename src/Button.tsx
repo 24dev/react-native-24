@@ -63,7 +63,7 @@ const Button: React.FC<{
   feedback?: FeedbackType;
   theme?: ThemeType;
   children: any;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   onPress?: () => void;
   onPressIn?: () => void;
   onPressOut?: () => void;
@@ -88,12 +88,18 @@ const Button: React.FC<{
           ...themes[theme[0]],
           ...themes[theme[1]]
         };
+  const Style = Array.isArray(style)
+    ? {
+        ...style[0],
+        ...style[1]
+      }
+    : style;
   return (
     <Tag
       style={{
         ...Themes,
         ...(disabled ? themes.disabled : {}),
-        ...style
+        ...Style
       }}
       disabled={disabled}
       onPress={onPress}
