@@ -7,7 +7,8 @@ import {
 } from "react-native";
 
 type FeedbackType = "opacity" | "highlight" | "none";
-type ThemeType = "primary" | "outline" | "invisible";
+type ThemeOptions = "primary" | "outline" | "invisible" | "round";
+type ThemeType = ThemeOptions[] | ThemeOptions;
 
 const themes: any = {
   primary: {
@@ -67,10 +68,19 @@ const Button: React.FC<{
   } = props;
 
   const Tag = getTag(feedback);
+  const Themes =
+    typeof theme === "string"
+      ? themes[theme]
+      : {
+          ...themes[theme[0]],
+          ...themes[theme[1]],
+          ...themes[theme[0]],
+          ...themes[theme[4]]
+        };
   return (
     <Tag
       style={{
-        ...themes[theme],
+        ...Themes,
         ...(disabled ? themes.disabled : {}),
         ...style
       }}

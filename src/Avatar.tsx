@@ -2,6 +2,9 @@ import React from "react";
 import { View, ViewStyle, StyleSheet, ImageBackground } from "react-native";
 
 const styles = StyleSheet.create({
+  base: {
+    overflow: "hidden"
+  },
   xxs: {
     height: 24,
     width: 24,
@@ -39,7 +42,7 @@ const Avatar: React.FC<{
     <View style={[styles[size], style]}>
       <ImageBackground
         source={source}
-        style={styles[size]}
+        style={[styles.base, styles[size]]}
         resizeMode="cover"
       />
     </View>

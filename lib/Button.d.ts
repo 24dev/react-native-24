@@ -1,7 +1,8 @@
 import React from "react";
 import { ViewStyle } from "react-native";
 declare type FeedbackType = "opacity" | "highlight" | "none";
-declare type ThemeType = "primary" | "outline" | "invisible";
+declare type ThemeOptions = "primary" | "outline" | "invisible" | "round";
+declare type ThemeType = ThemeOptions[] | ThemeOptions;
 declare const Button: React.FC<{
     feedback?: FeedbackType;
     theme?: ThemeType;
