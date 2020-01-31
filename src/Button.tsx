@@ -38,7 +38,9 @@ const themes: any = {
     height: 50,
     paddingVertical: 0,
     paddingHorizontal: 0,
-    borderRadius: 25
+    borderRadius: 25,
+    alignItems: "center",
+    justifyContent: "center"
   },
   disabled: {
     opacity: 0.75,

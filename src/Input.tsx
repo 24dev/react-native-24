@@ -5,8 +5,9 @@ const Input: React.FC<{
   height?: number;
   style?: ViewStyle;
   value?: string;
+  onChange?: Function;
 }> = props => {
-  const { height = 40, style = {}, value = "" } = props;
+  const { height = 40, style = {}, value = "", onChange = () => {} } = props;
   return (
     <TextInput
       style={[
@@ -19,7 +20,8 @@ const Input: React.FC<{
         },
         style
       ]}
-      value={value}
+      onChangeText={value => onChange(value)}
+      // value={value}
     />
   );
 };

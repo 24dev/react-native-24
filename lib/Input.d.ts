@@ -4,6 +4,7 @@ declare const Input: React.FC<{
     height?: number;
     style?: ViewStyle;
     value?: string;
+    onChange?: Function;
 }>;
 export default Input;
 //# sourceMappingURL=Input.d.ts.map
