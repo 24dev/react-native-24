@@ -12,23 +12,18 @@ type ThemeType = ThemeOptions[] | ThemeOptions;
 
 const themes: any = {
   primary: {
-    // border: 0,
-    outline: "none",
     paddingVertical: 10,
     paddingHorizontal: 30,
     backgroundColor: "#4a90e2",
     borderRadius: 3
   },
   secondary: {
-    // border: 0,
-    outline: "none",
     paddingVertical: 10,
     paddingHorizontal: 30,
     backgroundColor: "#fff",
     borderRadius: 3
   },
   outline: {
-    outline: "none",
     background: "transparent",
     paddingVertical: 10,
     paddingHorizontal: 30,
@@ -37,8 +32,6 @@ const themes: any = {
     borderRadius: 3
   },
   invisible: {
-    // border: 0,
-    outline: "none",
     background: "transparent"
   },
   round: {
@@ -48,8 +41,7 @@ const themes: any = {
     justifyContent: "center"
   },
   disabled: {
-    opacity: 0.75,
-    cursor: "not-allowed"
+    opacity: 0.75
   }
 };
 
