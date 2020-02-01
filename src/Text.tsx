@@ -48,7 +48,7 @@ export interface TextProps {
   underlined?: boolean;
   numberOfLines?: number;
   children: any;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
 }
 
 const Wrap: React.FC<TextProps> = props => {
@@ -65,6 +65,12 @@ const Wrap: React.FC<TextProps> = props => {
   } = props;
   let text = children;
   let fontWeight = {};
+  const Style = Array.isArray(style)
+    ? {
+        ...style[0],
+        ...style[1]
+      }
+    : style;
   if (camel) {
     text = text.slice(0, 1).toUpperCase() + text.slice(1, text.length);
   }
@@ -80,7 +86,7 @@ const Wrap: React.FC<TextProps> = props => {
         style={[
           sizes[size],
           { color },
-          style,
+          Style,
           underlined ? styles.underlined : {},
           fontWeight
         ]}
@@ -96,7 +102,7 @@ const Wrap: React.FC<TextProps> = props => {
       style={[
         sizes[size],
         { color },
-        style,
+        Style,
         underlined ? styles.underlined : {},
         fontWeight
       ]}

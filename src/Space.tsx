@@ -1,7 +1,10 @@
 import React from "react";
 import { View, ViewStyle } from "react-native";
 
-const sizes: any = {
+type SizeTypes = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+
+const sizes: Record<SizeTypes, number> = {
+  xxs: 1,
   xs: 2,
   sm: 4,
   md: 8,
@@ -11,7 +14,7 @@ const sizes: any = {
 };
 
 const Space: React.FC<{
-  size?: string;
+  size?: SizeTypes;
   children?: any;
   style?: ViewStyle;
 }> = props => {

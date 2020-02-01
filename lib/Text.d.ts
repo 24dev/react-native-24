@@ -10,7 +10,7 @@ export interface TextProps {
     underlined?: boolean;
     numberOfLines?: number;
     children: any;
-    style?: TextStyle;
+    style?: TextStyle | TextStyle[];
 }
 declare const Wrap: React.FC<TextProps>;
 export default Wrap;

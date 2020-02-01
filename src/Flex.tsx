@@ -19,7 +19,7 @@ const Flex: React.FC<{
     | "initial"
     | "inherit";
   children: any;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   vertical?: boolean;
 }> = props => {
   const {
@@ -29,6 +29,12 @@ const Flex: React.FC<{
     vertical = false,
     style = {}
   } = props;
+  const Style = Array.isArray(style)
+    ? {
+        ...style[0],
+        ...style[1]
+      }
+    : style;
   return (
     <View
       style={
@@ -37,7 +43,7 @@ const Flex: React.FC<{
           flexDirection: vertical ? "column" : "row",
           alignItems,
           justifyContent,
-          ...style
+          ...Style
         } as ViewStyle
       }
     >

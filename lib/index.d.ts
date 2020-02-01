@@ -6,5 +6,6 @@ import Divider from "./Divider";
 import Spinner from "./Spinner";
 import Input from "./Input";
 import Avatar from "./Avatar";
-export { Avatar, Text, TextProps, Flex, Button, Space, Spinner, Input, Divider };
+import ProgressBar from "./ProgressBar";
+export { Avatar, Text, TextProps, Flex, Button, Space, Spinner, Input, Divider, ProgressBar };
 //# sourceMappingURL=index.d.ts.map

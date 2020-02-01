@@ -6,6 +6,7 @@ import Divider from "./Divider";
 import Spinner from "./Spinner";
 import Input from "./Input";
 import Avatar from "./Avatar";
+import ProgressBar from "./ProgressBar";
 
 export {
   Avatar,
@@ -16,5 +17,6 @@ export {
   Space,
   Spinner,
   Input,
-  Divider
+  Divider,
+  ProgressBar
 };
