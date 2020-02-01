@@ -12,7 +12,7 @@ type ThemeType = ThemeOptions[] | ThemeOptions;
 
 const themes: any = {
   primary: {
-    border: 0,
+    // border: 0,
     outline: "none",
     paddingVertical: 10,
     paddingHorizontal: 30,
@@ -20,7 +20,7 @@ const themes: any = {
     borderRadius: 3
   },
   secondary: {
-    border: 0,
+    // border: 0,
     outline: "none",
     paddingVertical: 10,
     paddingHorizontal: 30,
@@ -37,7 +37,7 @@ const themes: any = {
     borderRadius: 3
   },
   invisible: {
-    border: 0,
+    // border: 0,
     outline: "none",
     background: "transparent"
   },
