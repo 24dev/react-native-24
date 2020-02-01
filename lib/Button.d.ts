@@ -13,6 +13,7 @@ declare const Button: React.FC<{
     onPressOut?: () => void;
     disabled?: boolean;
     size?: number;
+    underlayColor?: string;
 }>;
 export default Button;
 //# sourceMappingURL=Button.d.ts.map

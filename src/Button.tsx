@@ -74,6 +74,7 @@ const Button: React.FC<{
   onPressOut?: () => void;
   disabled?: boolean;
   size?: number;
+  underlayColor?: string;
 }> = props => {
   const {
     feedback = "opacity",
@@ -84,7 +85,8 @@ const Button: React.FC<{
     onPressIn = () => {},
     onPressOut = () => {},
     disabled = false,
-    size = 50
+    size = 50,
+    underlayColor = "#fafafa"
   } = props;
 
   const Tag = getTag(feedback);
@@ -121,6 +123,7 @@ const Button: React.FC<{
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      {...(feedback === "highlight" ? underlayColor : null)}
     >
       {children}
     </Tag>
