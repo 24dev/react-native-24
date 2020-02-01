@@ -24,16 +24,13 @@ const themes: any = {
     borderRadius: 3
   },
   outline: {
-    background: "transparent",
     paddingVertical: 10,
     paddingHorizontal: 30,
     borderColor: "rgb(211, 211, 211)",
     borderWidth: 1,
     borderRadius: 3
   },
-  invisible: {
-    background: "transparent"
-  },
+  invisible: {},
   round: {
     paddingVertical: 0,
     paddingHorizontal: 0,
