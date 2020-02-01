@@ -112,7 +112,7 @@ const Button: React.FC<{
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      {...(feedback === "highlight" ? underlayColor : null)}
+      {...(feedback === "highlight" ? { underlayColor: underlayColor } : {})}
     >
       {children}
     </Tag>
