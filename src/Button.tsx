@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 type FeedbackType = "opacity" | "highlight" | "none";
-type ThemeOptions = "primary" | "outline" | "invisible" | "round";
+type ThemeOptions = "primary" | "secondary" | "outline" | "invisible" | "round";
 type ThemeType = ThemeOptions[] | ThemeOptions;
 
 const themes: any = {
@@ -17,6 +17,14 @@ const themes: any = {
     paddingVertical: 10,
     paddingHorizontal: 30,
     backgroundColor: "#4a90e2",
+    borderRadius: 3
+  },
+  secondary: {
+    border: 0,
+    outline: "none",
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    backgroundColor: "#fff",
     borderRadius: 3
   },
   outline: {
@@ -34,11 +42,8 @@ const themes: any = {
     background: "transparent"
   },
   round: {
-    width: 50,
-    height: 50,
     paddingVertical: 0,
     paddingHorizontal: 0,
-    borderRadius: 25,
     alignItems: "center",
     justifyContent: "center"
   },
@@ -68,6 +73,7 @@ const Button: React.FC<{
   onPressIn?: () => void;
   onPressOut?: () => void;
   disabled?: boolean;
+  size?: number;
 }> = props => {
   const {
     feedback = "opacity",
@@ -77,7 +83,8 @@ const Button: React.FC<{
     onPress = () => {},
     onPressIn = () => {},
     onPressOut = () => {},
-    disabled = false
+    disabled = false,
+    size = 50
   } = props;
 
   const Tag = getTag(feedback);
@@ -94,11 +101,20 @@ const Button: React.FC<{
         ...style[1]
       }
     : style;
+  const Round =
+    theme === "round" || (Array.isArray(theme) && theme.includes("round"))
+      ? {
+          height: size,
+          width: size,
+          borderRadius: size / 2
+        }
+      : {};
   return (
     <Tag
       style={{
         ...Themes,
         ...(disabled ? themes.disabled : {}),
+        ...Round,
         ...Style
       }}
       disabled={disabled}
