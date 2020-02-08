@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TextStyle } from "react-native";
+import { StyleSheet, View, TextStyle, ViewStyle } from "react-native";
 import { Text, Flex, Space } from "./";
 
 const styles = StyleSheet.create({
@@ -36,13 +36,15 @@ const ProgressBar: React.FC<{
   percentage?: boolean;
   label?: string;
   labelStyle?: TextStyle;
+  containerStyle?: ViewStyle;
 }> = props => {
   const {
     complete,
     color = "lightgreen",
     percentage = false,
     label = "",
-    labelStyle = {}
+    labelStyle = {},
+    containerStyle = {}
   } = props;
 
   return (
@@ -53,7 +55,13 @@ const ProgressBar: React.FC<{
           <Space size="xxs" />
         </React.Fragment>
       ) : null}
-      <View style={[styles.container, percentage ? { height: 14 } : {}]}>
+      <View
+        style={[
+          styles.container,
+          percentage ? { height: 14 } : {},
+          containerStyle
+        ]}
+      >
         <Flex
           justifyContent="flex-end"
           style={[
