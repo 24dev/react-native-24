@@ -4,12 +4,10 @@ import { Text, Flex, Space } from "./";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     position: "relative",
     height: 8,
     backgroundColor: "lightgrey",
     zIndex: 2,
-    width: "100%",
     borderRadius: 4,
     overflow: "hidden"
   },
@@ -37,6 +35,7 @@ const ProgressBar: React.FC<{
   label?: string;
   labelStyle?: TextStyle;
   containerStyle?: ViewStyle;
+  width?: number | string;
 }> = props => {
   const {
     complete,
@@ -44,7 +43,8 @@ const ProgressBar: React.FC<{
     percentage = false,
     label = "",
     labelStyle = {},
-    containerStyle = {}
+    containerStyle = {},
+    width = "100%"
   } = props;
 
   return (
@@ -55,7 +55,9 @@ const ProgressBar: React.FC<{
           <Space size="xxs" />
         </React.Fragment>
       ) : null}
-      <View style={[styles.container, percentage ? { height: 14 } : {}]}>
+      <View
+        style={[styles.container, percentage ? { height: 14 } : {}, { width }]}
+      >
         <Flex
           justifyContent="flex-end"
           style={[

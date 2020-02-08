@@ -7,6 +7,7 @@ declare const ProgressBar: React.FC<{
     label?: string;
     labelStyle?: TextStyle;
     containerStyle?: ViewStyle;
+    width?: number | string;
 }>;
 export default ProgressBar;
 //# sourceMappingURL=ProgressBar.d.ts.map
