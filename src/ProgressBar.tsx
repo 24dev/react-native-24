@@ -48,20 +48,14 @@ const ProgressBar: React.FC<{
   } = props;
 
   return (
-    <View>
+    <View style={[containerStyle]}>
       {label ? (
         <React.Fragment>
           <Text style={[styles.label, labelStyle]}>{label}</Text>
           <Space size="xxs" />
         </React.Fragment>
       ) : null}
-      <View
-        style={[
-          styles.container,
-          percentage ? { height: 14 } : {},
-          containerStyle
-        ]}
-      >
+      <View style={[styles.container, percentage ? { height: 14 } : {}]}>
         <Flex
           justifyContent="flex-end"
           style={[
