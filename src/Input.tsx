@@ -13,7 +13,6 @@ const Input: React.FC<TextInputProps &
     height?: number;
     style?: ViewStyle;
     value?: string;
-    onChange?: (value: string) => void;
     multiline?: boolean;
     editable?: boolean;
     placeholder?: string;
@@ -24,7 +23,6 @@ const Input: React.FC<TextInputProps &
     style = {},
     multiline = false,
     value = "",
-    onChange = () => {},
     editable = true,
     placeholder = "",
     secure = false
@@ -85,7 +83,7 @@ const Input: React.FC<TextInputProps &
       ]}
       secureTextEntry={secure}
       multiline={multiline}
-      onChangeText={value => onChange(value)}
+      onChangeText={props.onChangeText}
       {...(value ? value : null)}
       editable={editable}
       placeholder={placeholder}

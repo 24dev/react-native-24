@@ -4,7 +4,6 @@ declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInput
     height?: number;
     style?: ViewStyle;
     value?: string;
-    onChange?: (value: string) => void;
     multiline?: boolean;
     editable?: boolean;
     placeholder?: string;
