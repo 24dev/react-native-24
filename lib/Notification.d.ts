@@ -13,7 +13,9 @@ interface State {
     };
     position?: PositionTypes;
 }
-declare class Notification extends React.Component<{}, State> {
+declare class Notification extends React.Component<{
+    text: any;
+}, State> {
     animatedValue: Animated.Value;
     constructor(props: any);
     open: (message: string, time?: number, position?: PositionTypes, icon?: any, iconProps?: {

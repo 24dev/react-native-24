@@ -36,20 +36,20 @@ interface State {
   };
   position?: PositionTypes;
 }
-class Notification extends React.Component<{}, State> {
+class Notification extends React.Component<{ text: any }, State> {
   animatedValue: Animated.Value;
 
   constructor(props: any) {
     super(props);
-    this.animatedValue = new Animated.Value(-100);
+    this.animatedValue = new Animated.Value(-150);
     this.state = {
       modalShown: false,
-      color: "green",
+      color: "#272727",
       message: "Success!",
       icon: null,
       iconProps: {
         name: "check-circle",
-        color: "grey",
+        color: "#272727",
         size: 25
       }
     };
@@ -82,13 +82,13 @@ class Notification extends React.Component<{}, State> {
   };
 
   getAlign = (position: PositionTypes) => {
-    if ((position = "top")) {
+    if (position === "top") {
       return "center";
     }
-    if ((position = "top-left")) {
+    if (position === "top-left") {
       return "flex-start";
     }
-    if ((position = "top-right")) {
+    if (position === "top-right") {
       return "flex-end";
     }
     return "center";
@@ -97,6 +97,7 @@ class Notification extends React.Component<{}, State> {
   render() {
     const { color, message, icon, iconProps, position = "top" } = this.state;
     const Icon = icon;
+    const TextComponent = this.props.text;
     return (
       <Animated.View
         style={{
@@ -119,7 +120,11 @@ class Notification extends React.Component<{}, State> {
               />
             </View>
           )}
-          <Text style={{ color }}>{message}</Text>
+          {TextComponent ? (
+            <TextComponent style={{ color }}>{message}</TextComponent>
+          ) : (
+            <Text style={{ color }}>{message}</Text>
+          )}
         </View>
       </Animated.View>
     );
