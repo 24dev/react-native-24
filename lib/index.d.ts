@@ -7,5 +7,7 @@ import Spinner from "./Spinner";
 import Input from "./Input";
 import Avatar from "./Avatar";
 import ProgressBar from "./ProgressBar";
-export { Avatar, Text, TextProps, Flex, Button, Space, Spinner, Input, Divider, ProgressBar };
+import Notification from "./Notification";
+import Notify from "./Notify";
+export { Avatar, Text, TextProps, Flex, Button, Space, Spinner, Input, Divider, ProgressBar, Notification, Notify };
 //# sourceMappingURL=index.d.ts.map

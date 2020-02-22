@@ -156,9 +156,40 @@ placeholder?: string;
 ```jsx
 <Avatar props />
 
-source: any;
+source: any; // uri or require local
 style?: ViewStyle;
 size?: "xxs" | "xs" | "sm" | "md" | "lg";
+```
+
+<b>Notification</b> (for in-app toasts)
+
+```jsx
+import { Notification, Notify } from "react-native-24";
+// Use at the root level of your app. Then you can call Notify.open elsewhere.
+<Notification
+  ref={ref => {
+    Notify.setNotification(ref);
+  }}
+/>;
+```
+
+<b>Notify</b> (to call Notification ☝️)
+
+```jsx
+Notify.open(message, type);
+
+message: string;
+success: "success" | "info" | "error";
+```
+
+<b>Icon</b> (uses react-native-vector-icons)
+
+```jsx
+<Icon props />;
+
+name: string;
+size: number;
+color: string;
 ```
 
 ## Roadmap

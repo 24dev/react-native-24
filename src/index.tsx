@@ -7,6 +7,8 @@ import Spinner from "./Spinner";
 import Input from "./Input";
 import Avatar from "./Avatar";
 import ProgressBar from "./ProgressBar";
+import Notification from "./Notification";
+import Notify from "./Notify";
 
 export {
   Avatar,
@@ -18,5 +20,7 @@ export {
   Spinner,
   Input,
   Divider,
-  ProgressBar
+  ProgressBar,
+  Notification,
+  Notify
 };
