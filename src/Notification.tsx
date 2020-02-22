@@ -33,7 +33,10 @@ interface State {
     color?: string;
     size?: number;
   };
+  position?: PositionTypes;
 }
+
+type PositionTypes = "top" | "top-right" | "top-left";
 
 class Notification extends React.Component<{}, State> {
   animatedValue: Animated.Value;
@@ -58,11 +61,12 @@ class Notification extends React.Component<{}, State> {
     message: string,
     time = 2000,
     icon: any = null,
-    iconProps: State["iconProps"] = {}
+    iconProps: State["iconProps"] = {},
+    position: PositionTypes = "top"
   ) => {
     const { modalShown } = this.state;
     if (modalShown) return;
-    this.setState({ modalShown: true, message, icon, iconProps });
+    this.setState({ modalShown: true, message, icon, iconProps, position });
     Animated.timing(this.animatedValue, {
       toValue: 0,
       duration: 350
@@ -79,8 +83,21 @@ class Notification extends React.Component<{}, State> {
     }, time);
   };
 
+  getAlign = (position: PositionTypes) => {
+    if ((position = "top")) {
+      return "center";
+    }
+    if ((position = "top-left")) {
+      return "flex-start";
+    }
+    if ((position = "top-right")) {
+      return "flex-end";
+    }
+    return "center";
+  };
+
   render() {
-    const { color, message, icon, iconProps } = this.state;
+    const { color, message, icon, iconProps, position = "top" } = this.state;
     const Icon = icon;
     return (
       <Animated.View
@@ -88,22 +105,22 @@ class Notification extends React.Component<{}, State> {
           transform: [{ translateY: this.animatedValue }],
           position: "absolute",
           top: 50,
-          alignSelf: "center",
+          alignSelf: this.getAlign(position),
           maxWidth,
           paddingHorizontal: 50,
           zIndex: 10
         }}
       >
         <View style={styles.card}>
-          <View style={{ marginRight: 14 }}>
-            {Icon && (
+          {Icon && (
+            <View style={{ marginRight: 14 }}>
               <Icon
                 size={iconProps.size}
                 name={iconProps.name}
                 color={iconProps.color}
               />
-            )}
-          </View>
+            </View>
+          )}
           <Text style={{ color }}>{message}</Text>
         </View>
       </Animated.View>

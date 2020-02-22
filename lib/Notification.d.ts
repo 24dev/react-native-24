@@ -10,7 +10,9 @@ interface State {
         color?: string;
         size?: number;
     };
+    position?: PositionTypes;
 }
+declare type PositionTypes = "top" | "top-right" | "top-left";
 declare class Notification extends React.Component<{}, State> {
     animatedValue: Animated.Value;
     constructor(props: any);
@@ -18,8 +20,9 @@ declare class Notification extends React.Component<{}, State> {
         name?: string | undefined;
         color?: string | undefined;
         size?: number | undefined;
-    }) => void;
+    }, position?: PositionTypes) => void;
     close: (time: number) => void;
+    getAlign: (position: PositionTypes) => "flex-start" | "flex-end" | "center";
     render(): JSX.Element;
 }
 export default Notification;
