@@ -1,6 +1,7 @@
 import { Ref } from "react";
+export declare type PositionTypes = "top" | "top-right" | "top-left";
 declare function setNotification(ref: Ref<any>): void;
-declare function open(message: string, time?: number, icon?: any, // component
+declare function open(message: string, time?: number, position?: PositionTypes, icon?: any, // component
 iconProps?: {
     name?: string;
     color?: string;

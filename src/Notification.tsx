@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Animated, View, Dimensions, Text } from "react-native";
+import { PositionTypes } from "./Notify";
 
 const styles = StyleSheet.create({
   card: {
@@ -35,9 +36,6 @@ interface State {
   };
   position?: PositionTypes;
 }
-
-type PositionTypes = "top" | "top-right" | "top-left";
-
 class Notification extends React.Component<{}, State> {
   animatedValue: Animated.Value;
 
@@ -60,9 +58,9 @@ class Notification extends React.Component<{}, State> {
   public open = (
     message: string,
     time = 2000,
+    position: PositionTypes = "top",
     icon: any = null,
-    iconProps: State["iconProps"] = {},
-    position: PositionTypes = "top"
+    iconProps: State["iconProps"] = {}
   ) => {
     const { modalShown } = this.state;
     if (modalShown) return;

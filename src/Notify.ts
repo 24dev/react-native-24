@@ -2,6 +2,8 @@ import { Ref } from "react";
 
 let notification: any;
 
+export type PositionTypes = "top" | "top-right" | "top-left";
+
 function setNotification(ref: Ref<any>) {
   notification = ref;
 }
@@ -9,6 +11,7 @@ function setNotification(ref: Ref<any>) {
 function open(
   message: string,
   time?: number,
+  position?: PositionTypes,
   icon?: any, // component
   iconProps?: {
     name?: string;
@@ -16,7 +19,7 @@ function open(
     size?: number;
   }
 ) {
-  notification.open(message, time, icon, iconProps);
+  notification.open(message, time, position, icon, iconProps);
 }
 
 function close() {
