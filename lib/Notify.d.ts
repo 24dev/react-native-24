@@ -1,6 +1,6 @@
 import { Ref } from "react";
 declare function setNotification(ref: Ref<any>): void;
-declare function open(message: string, time: number, icon?: any, // component
+declare function open(message: string, time?: number, icon?: any, // component
 iconProps?: {
     name?: string;
     color?: string;

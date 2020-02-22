@@ -4,11 +4,12 @@ import { StyleSheet, Animated, View, Dimensions, Text } from "react-native";
 const styles = StyleSheet.create({
   card: {
     paddingVertical: 14,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
+    backgroundColor: "white",
     elevation: 3,
     shadowColor: "#000",
     shadowOffset: {
@@ -89,7 +90,8 @@ class Notification extends React.Component<{}, State> {
           top: 50,
           alignSelf: "center",
           maxWidth,
-          paddingHorizontal: 50
+          paddingHorizontal: 50,
+          zIndex: 10
         }}
       >
         <View style={styles.card}>

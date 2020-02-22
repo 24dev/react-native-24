@@ -8,7 +8,7 @@ function setNotification(ref: Ref<any>) {
 
 function open(
   message: string,
-  time: number,
+  time?: number,
   icon?: any, // component
   iconProps?: {
     name?: string;
