@@ -9,6 +9,7 @@ const Input: React.FC<{
   multiline?: boolean;
   editable?: boolean;
   placeholder?: string;
+  secure?: boolean;
 }> = props => {
   const {
     height = 40,
@@ -17,7 +18,8 @@ const Input: React.FC<{
     value = "",
     onChange = () => {},
     editable = true,
-    placeholder = ""
+    placeholder = "",
+    secure = false
   } = props;
   return (
     <TextInput
@@ -31,6 +33,7 @@ const Input: React.FC<{
         },
         style
       ]}
+      secureTextEntry={secure}
       multiline={multiline}
       onChangeText={value => onChange(value)}
       {...(value ? value : null)}
