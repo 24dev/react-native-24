@@ -75,7 +75,7 @@ class Notification extends React.Component<{ text: any }, State> {
     this.setState({ modalShown: false });
     setTimeout(() => {
       Animated.timing(this.animatedValue, {
-        toValue: -100,
+        toValue: -150,
         duration: 350
       }).start();
     }, time);
