@@ -1,10 +1,10 @@
 import React from "react";
-import { ViewStyle } from "react-native";
-declare const Input: React.FC<{
+import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } from "react-native";
+declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInputIOSProps & {
     height?: number;
     style?: ViewStyle;
     value?: string;
-    onChange?: Function;
+    onChange?: (value: string) => void;
     multiline?: boolean;
     editable?: boolean;
     placeholder?: string;
