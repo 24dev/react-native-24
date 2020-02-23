@@ -84,7 +84,7 @@ const Input: React.FC<TextInputProps &
       secureTextEntry={secure}
       multiline={multiline}
       onChangeText={props.onChangeText}
-      {...(value ? value : null)}
+      value={value || undefined}
       editable={editable}
       placeholder={placeholder}
     />

@@ -165,11 +165,13 @@ size?: "xxs" | "xs" | "sm" | "md" | "lg";
 
 ```jsx
 import { Notification, Notify } from "react-native-24";
+import { Text } from "...";
 // Use at the root level of your app. Then you can call Notify.open elsewhere.
 <Notification
   ref={ref => {
     Notify.setNotification(ref);
   }}
+  text={Text} // use whatever text component you want (so you can have custom fonts)
 />;
 ```
 
@@ -180,16 +182,6 @@ Notify.open(message, type);
 
 message: string;
 success: "success" | "info" | "error";
-```
-
-<b>Icon</b> (uses react-native-vector-icons)
-
-```jsx
-<Icon props />;
-
-name: string;
-size: number;
-color: string;
 ```
 
 ## Roadmap
