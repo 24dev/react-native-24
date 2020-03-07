@@ -161,6 +161,16 @@ style?: ViewStyle;
 size?: "xxs" | "xs" | "sm" | "md" | "lg";
 ```
 
+<b>Card</b>
+
+```jsx
+<Card props />
+
+children: any;
+style?: ViewStyle;
+noPadding?: boolean;
+```
+
 <b>Notification</b> (for in-app toasts)
 
 ```jsx
