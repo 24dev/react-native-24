@@ -1,6 +1,6 @@
 {
   "name": "react-native-24",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A clean, modern React Native component library",
   "main": "lib/index.js",
   "types": "lib",

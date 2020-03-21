@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Ref } from "react";
 import {
   ViewStyle,
   TextInput,
@@ -17,6 +17,7 @@ const Input: React.FC<TextInputProps &
     editable?: boolean;
     placeholder?: string;
     secure?: boolean;
+    forwardRef?: Ref<any>;
   }> = props => {
   const {
     height = 40,
@@ -25,7 +26,8 @@ const Input: React.FC<TextInputProps &
     value = "",
     editable = true,
     placeholder = "",
-    secure = false
+    secure = false,
+    forwardRef = () => {}
   } = props;
   return (
     <TextInput
@@ -87,6 +89,7 @@ const Input: React.FC<TextInputProps &
       value={value || undefined}
       editable={editable}
       placeholder={placeholder}
+      ref={forwardRef}
     />
   );
 };
