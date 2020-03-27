@@ -5,6 +5,7 @@ declare type ThemeOptions = "primary" | "secondary" | "outline" | "invisible" | 
 declare type ThemeType = ThemeOptions[] | ThemeOptions;
 declare const Button: React.FC<{
     feedback?: FeedbackType;
+    activeOpacity?: number;
     theme?: ThemeType;
     children: any;
     style?: ViewStyle | ViewStyle[];

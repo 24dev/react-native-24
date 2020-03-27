@@ -55,6 +55,7 @@ const getTag = (feedback: FeedbackType) => {
 
 const Button: React.FC<{
   feedback?: FeedbackType;
+  activeOpacity?: number;
   theme?: ThemeType;
   children: any;
   style?: ViewStyle | ViewStyle[];
@@ -75,7 +76,8 @@ const Button: React.FC<{
     onPressOut = () => {},
     disabled = false,
     size = 50,
-    underlayColor = "#fafafa"
+    underlayColor = "#fafafa",
+    activeOpacity = 0.2
   } = props;
 
   const Tag = getTag(feedback);
@@ -112,6 +114,7 @@ const Button: React.FC<{
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      {...(feedback === "opacity" ? { activeOpacity: activeOpacity } : {})}
       {...(feedback === "highlight" ? { underlayColor: underlayColor } : {})}
     >
       {children}
