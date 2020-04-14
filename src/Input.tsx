@@ -1,4 +1,4 @@
-import React, { Ref } from "react";
+import React, { Ref } from 'react';
 import {
   View,
   ViewStyle,
@@ -7,7 +7,7 @@ import {
   TextInputIOSProps,
   TextInputAndroidProps,
   StyleSheet,
-} from "react-native";
+} from 'react-native';
 
 const styles = StyleSheet.create({
   inputWrapper: {
@@ -44,9 +44,8 @@ const Input: React.FC<TextInputProps &
   placeholder?: string;
   secure?: boolean;
   forwardRef?: Ref<any>;
-  withIcon?: boolean;
-  icon?: React.ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconRight?: React.ReactNode;
+  iconLeft?: React.ReactNode;
   iconPaddingRight?: number;
   iconPaddingLeft?: number;
 }> = props => {
@@ -55,34 +54,16 @@ const Input: React.FC<TextInputProps &
     style = {},
     wrapperStyle = {},
     multiline = false,
-    value = "",
+    value = '',
     editable = true,
-    placeholder = "",
+    placeholder = '',
     secure = false,
     forwardRef = () => {},
-    withIcon = false,
-    icon = <React.Fragment />,
-    iconPosition = 'right',
+    iconRight = <React.Fragment />,
+    iconLeft = <React.Fragment />,
     iconPaddingRight = 5,
     iconPaddingLeft = 5,
   } = props;
-
-  const renderIcon = () => {
-
-    if (iconPosition === 'right') {
-      return (
-        <View style={{...styles.iconRightWrapper, right: iconPaddingRight }}>
-          {icon}
-        </View>
-      )
-    } else {
-      return (
-        <View style={{...styles.iconLeftWrapper, left: iconPaddingLeft }}>
-          {icon}
-        </View>
-      )
-    }
-  };
 
   return (
     <View style={[styles.inputWrapper, wrapperStyle]}>
@@ -131,13 +112,13 @@ const Input: React.FC<TextInputProps &
         allowFontScaling={props.allowFontScaling}
         style={[
           {
-            width: "100%",
+            width: '100%',
             height,
             borderWidth: 1,
-            borderColor: "lightgrey",
-            borderRadius: 6
+            borderColor: 'lightgrey',
+            borderRadius: 6,
           },
-          style
+          style,
         ]}
         secureTextEntry={secure}
         multiline={multiline}
@@ -147,7 +128,16 @@ const Input: React.FC<TextInputProps &
         placeholder={placeholder}
         ref={forwardRef}
       />
-      {withIcon ? renderIcon() : null }
+      {iconLeft ? (
+        <View style={{ ...styles.iconLeftWrapper, left: iconPaddingLeft }}>
+          {iconLeft}
+        </View>
+      ) : null}
+      {iconRight ? (
+        <View style={{ ...styles.iconRightWrapper, right: iconPaddingRight }}>
+          {iconRight}
+        </View>
+      ) : null}
     </View>
   );
 };
