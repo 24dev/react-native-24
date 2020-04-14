@@ -1,5 +1,5 @@
-import React, { Ref } from "react";
-import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } from "react-native";
+import React, { Ref } from 'react';
+import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } from 'react-native';
 declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInputIOSProps & {
     height?: number;
     style?: ViewStyle;
@@ -10,9 +10,8 @@ declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInput
     placeholder?: string;
     secure?: boolean;
     forwardRef?: Ref<any>;
-    withIcon?: boolean;
-    icon?: React.ReactNode;
-    iconPosition?: 'left' | 'right';
+    iconRight?: React.ReactNode;
+    iconLeft?: React.ReactNode;
     iconPaddingRight?: number;
     iconPaddingLeft?: number;
 }>;
