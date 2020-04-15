@@ -18,7 +18,14 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    paddingHorizontal: 8
+  },
+  iconLeft: {
+    marginRight: 5
+  },
+  iconRight: {
+    marginLeft: 5
   }
 });
 
@@ -27,7 +34,6 @@ const Input: React.FC<TextInputProps &
   TextInputIOSProps & {
     height?: number;
     style?: ViewStyle;
-    containerStyle?: ViewStyle;
     value?: string;
     multiline?: boolean;
     editable?: boolean;
@@ -38,9 +44,8 @@ const Input: React.FC<TextInputProps &
     iconLeft?: React.ReactNode;
   }> = props => {
   const {
-    height = 40,
     style = {},
-    containerStyle = {},
+    height = 40,
     multiline = false,
     value = "",
     editable = true,
@@ -51,9 +56,12 @@ const Input: React.FC<TextInputProps &
     iconLeft = null
   } = props;
 
+  const maxHeight = multiline ? 180 : height;
+  const minHeight = height;
+
   return (
-    <View style={[styles.container, containerStyle]}>
-      {iconLeft ? <View style={{ flex: 0.2 }}>{iconLeft}</View> : null}
+    <View style={[styles.container, style]}>
+      {iconLeft ? <View style={styles.iconLeft}>{iconLeft}</View> : null}
       <TextInput
         underlineColorAndroid={props.underlineColorAndroid}
         textBreakStrategy={props.textBreakStrategy}
@@ -97,7 +105,7 @@ const Input: React.FC<TextInputProps &
         autoCompleteType={props.autoCompleteType}
         autoCorrect={props.autoCorrect}
         allowFontScaling={props.allowFontScaling}
-        style={[{ height, flex: 1 }, style]}
+        style={{ flex: 1, minHeight, maxHeight }}
         secureTextEntry={secure}
         multiline={multiline}
         onChangeText={props.onChangeText}
@@ -106,7 +114,7 @@ const Input: React.FC<TextInputProps &
         placeholder={placeholder}
         ref={forwardRef}
       />
-      {iconRight ? <View style={{ flex: 0.2 }}>{iconRight}</View> : null}
+      {iconRight ? <View style={styles.iconRight}>{iconRight}</View> : null}
     </View>
   );
 };

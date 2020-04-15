@@ -3,7 +3,6 @@ import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } f
 declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInputIOSProps & {
     height?: number;
     style?: ViewStyle;
-    containerStyle?: ViewStyle;
     value?: string;
     multiline?: boolean;
     editable?: boolean;
