@@ -1,9 +1,9 @@
-import React, { Ref } from 'react';
-import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } from 'react-native';
+import React, { Ref } from "react";
+import { ViewStyle, TextInputProps, TextInputIOSProps, TextInputAndroidProps } from "react-native";
 declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInputIOSProps & {
     height?: number;
     style?: ViewStyle;
-    wrapperStyle?: ViewStyle;
+    containerStyle?: ViewStyle;
     value?: string;
     multiline?: boolean;
     editable?: boolean;
@@ -12,8 +12,6 @@ declare const Input: React.FC<TextInputProps & TextInputAndroidProps & TextInput
     forwardRef?: Ref<any>;
     iconRight?: React.ReactNode;
     iconLeft?: React.ReactNode;
-    iconPaddingRight?: number;
-    iconPaddingLeft?: number;
 }>;
 export default Input;
 //# sourceMappingURL=Input.d.ts.map

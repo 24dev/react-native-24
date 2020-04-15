@@ -1,4 +1,4 @@
-import React, { Ref } from 'react';
+import React, { Ref } from "react";
 import {
   View,
   ViewStyle,
@@ -6,67 +6,54 @@ import {
   TextInputProps,
   TextInputIOSProps,
   TextInputAndroidProps,
-  StyleSheet,
-} from 'react-native';
+  StyleSheet
+} from "react-native";
 
 const styles = StyleSheet.create({
-  inputWrapper: {
-    position: 'relative',
-    width: '100%',
-  },
-  iconRightWrapper: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  iconLeftWrapper: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-  },
+  container: {
+    position: "relative",
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "lightgrey",
+    borderRadius: 6,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  }
 });
 
 const Input: React.FC<TextInputProps &
   TextInputAndroidProps &
   TextInputIOSProps & {
-  height?: number;
-  style?: ViewStyle;
-  wrapperStyle?: ViewStyle;
-  value?: string;
-  multiline?: boolean;
-  editable?: boolean;
-  placeholder?: string;
-  secure?: boolean;
-  forwardRef?: Ref<any>;
-  iconRight?: React.ReactNode;
-  iconLeft?: React.ReactNode;
-  iconPaddingRight?: number;
-  iconPaddingLeft?: number;
-}> = props => {
+    height?: number;
+    style?: ViewStyle;
+    containerStyle?: ViewStyle;
+    value?: string;
+    multiline?: boolean;
+    editable?: boolean;
+    placeholder?: string;
+    secure?: boolean;
+    forwardRef?: Ref<any>;
+    iconRight?: React.ReactNode;
+    iconLeft?: React.ReactNode;
+  }> = props => {
   const {
     height = 40,
     style = {},
-    wrapperStyle = {},
+    containerStyle = {},
     multiline = false,
-    value = '',
+    value = "",
     editable = true,
-    placeholder = '',
+    placeholder = "",
     secure = false,
     forwardRef = () => {},
-    iconRight = <React.Fragment />,
-    iconLeft = <React.Fragment />,
-    iconPaddingRight = 5,
-    iconPaddingLeft = 5,
+    iconRight = null,
+    iconLeft = null
   } = props;
 
   return (
-    <View style={[styles.inputWrapper, wrapperStyle]}>
+    <View style={[styles.container, containerStyle]}>
+      {iconLeft ? <View style={{ flex: 0.2 }}>{iconLeft}</View> : null}
       <TextInput
         underlineColorAndroid={props.underlineColorAndroid}
         textBreakStrategy={props.textBreakStrategy}
@@ -110,16 +97,7 @@ const Input: React.FC<TextInputProps &
         autoCompleteType={props.autoCompleteType}
         autoCorrect={props.autoCorrect}
         allowFontScaling={props.allowFontScaling}
-        style={[
-          {
-            width: '100%',
-            height,
-            borderWidth: 1,
-            borderColor: 'lightgrey',
-            borderRadius: 6,
-          },
-          style,
-        ]}
+        style={[{ height, flex: 1 }, style]}
         secureTextEntry={secure}
         multiline={multiline}
         onChangeText={props.onChangeText}
@@ -128,16 +106,7 @@ const Input: React.FC<TextInputProps &
         placeholder={placeholder}
         ref={forwardRef}
       />
-      {iconLeft ? (
-        <View style={{ ...styles.iconLeftWrapper, left: iconPaddingLeft }}>
-          {iconLeft}
-        </View>
-      ) : null}
-      {iconRight ? (
-        <View style={{ ...styles.iconRightWrapper, right: iconPaddingRight }}>
-          {iconRight}
-        </View>
-      ) : null}
+      {iconRight ? <View style={{ flex: 0.2 }}>{iconRight}</View> : null}
     </View>
   );
 };
