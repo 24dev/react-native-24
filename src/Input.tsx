@@ -112,6 +112,7 @@ const Input: React.FC<TextInputProps &
         value={value || undefined}
         editable={editable}
         placeholder={placeholder}
+        pointerEvents={props.pointerEvents}
         ref={forwardRef}
       />
       {iconRight ? <View style={styles.iconRight}>{iconRight}</View> : null}
