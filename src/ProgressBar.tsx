@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
 
 const ProgressBar: React.FC<{
   complete: number;
+  maxValue: number;
   color?: string;
   percentage?: boolean;
   label?: string;
@@ -39,6 +40,7 @@ const ProgressBar: React.FC<{
 }> = props => {
   const {
     complete,
+    maxValue = 100,
     color = "lightgreen",
     percentage = false,
     label = "",
@@ -63,7 +65,7 @@ const ProgressBar: React.FC<{
           style={[
             styles.innerBar,
             {
-              width: `${complete > 100 ? 100 : complete}%`,
+              width: `${complete > maxValue ? maxValue : complete}%`,
               backgroundColor: color
             }
           ]}
