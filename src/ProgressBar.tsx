@@ -34,12 +34,13 @@ const styles = StyleSheet.create({
 
 const ProgressBar: React.FC<{
   complete: number;
-  maxValue: number;
+  maxValue?: number;
   color?: string;
   percentage?: boolean;
   label?: string;
   labelStyle?: TextStyle;
   containerStyle?: ViewStyle;
+  barStyle?: ViewStyle;
   width?: number | string;
   gradientColors?: string[];
   gradientStart?: { x: number; y: number };
@@ -57,7 +58,6 @@ const ProgressBar: React.FC<{
     label = "",
     labelStyle = {},
     containerStyle = {},
-    width = "100%",
     gradientColors = [],
     gradientStart,
     gradientEnd,
@@ -65,6 +65,8 @@ const ProgressBar: React.FC<{
     gradientUseAngle,
     gradientAngle,
     gradientAngleCenter,
+    barStyle = {},
+    width = "100%",
   } = props;
 
   return (
@@ -76,7 +78,12 @@ const ProgressBar: React.FC<{
         </React.Fragment>
       ) : null}
       <View
-        style={[styles.container, percentage ? { height: 14 } : {}, { width }]}
+        style={[
+          styles.container,
+          barStyle,
+          percentage ? { height: 14 } : {},
+          { width },
+        ]}
       >
         <LinearGradient
           colors={gradientColors}
