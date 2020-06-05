@@ -9,35 +9,36 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
     zIndex: 2,
     borderRadius: 4,
-    overflow: "hidden"
+    overflow: "hidden",
   },
   label: {
     fontSize: 14,
-    color: "lightgrey"
+    color: "lightgrey",
   },
   innerBar: {
     position: "absolute",
     top: 0,
     left: 0,
     bottom: 0,
-    borderRadius: 4
+    borderRadius: 4,
   },
   indentPercentage: {
     position: "absolute",
-    left: "105%"
-  }
+    left: "105%",
+  },
 });
 
 const ProgressBar: React.FC<{
   complete: number;
-  maxValue: number;
+  maxValue?: number;
   color?: string;
   percentage?: boolean;
   label?: string;
   labelStyle?: TextStyle;
   containerStyle?: ViewStyle;
+  barStyle?: ViewStyle;
   width?: number | string;
-}> = props => {
+}> = (props) => {
   const {
     complete,
     maxValue = 100,
@@ -46,7 +47,8 @@ const ProgressBar: React.FC<{
     label = "",
     labelStyle = {},
     containerStyle = {},
-    width = "100%"
+    barStyle = {},
+    width = "100%",
   } = props;
 
   return (
@@ -58,7 +60,12 @@ const ProgressBar: React.FC<{
         </React.Fragment>
       ) : null}
       <View
-        style={[styles.container, percentage ? { height: 14 } : {}, { width }]}
+        style={[
+          styles.container,
+          barStyle,
+          percentage ? { height: 14 } : {},
+          { width },
+        ]}
       >
         <Flex
           justifyContent="flex-end"
@@ -66,8 +73,8 @@ const ProgressBar: React.FC<{
             styles.innerBar,
             {
               width: `${complete > maxValue ? maxValue : complete}%`,
-              backgroundColor: color
-            }
+              backgroundColor: color,
+            },
           ]}
         >
           {percentage ? (
@@ -76,9 +83,9 @@ const ProgressBar: React.FC<{
                 styles.label,
                 {
                   color: "white",
-                  marginHorizontal: 6
+                  marginHorizontal: 6,
                 },
-                complete < 25 ? styles.indentPercentage : {}
+                complete < 25 ? styles.indentPercentage : {},
               ]}
             >
               {`${complete.toFixed(1)}%`}
