@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TextStyle, ViewStyle } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+
 import { Text, Flex, Space } from "./";
 
 const styles = StyleSheet.create({
@@ -21,6 +23,8 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     borderRadius: 4,
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
   indentPercentage: {
     position: "absolute",
@@ -38,6 +42,13 @@ const ProgressBar: React.FC<{
   containerStyle?: ViewStyle;
   barStyle?: ViewStyle;
   width?: number | string;
+  gradientColors?: string[];
+  gradientStart?: { x: number; y: number };
+  gradientEnd?: { x: number; y: number };
+  gradientLocations?: number[];
+  gradientUseAngle?: boolean;
+  gradientAngle?: number;
+  gradientAngleCenter?: { x: number; y: number };
 }> = (props) => {
   const {
     complete,
@@ -47,6 +58,13 @@ const ProgressBar: React.FC<{
     label = "",
     labelStyle = {},
     containerStyle = {},
+    gradientColors = [],
+    gradientStart,
+    gradientEnd,
+    gradientLocations,
+    gradientUseAngle,
+    gradientAngle,
+    gradientAngleCenter,
     barStyle = {},
     width = "100%",
   } = props;
@@ -67,8 +85,14 @@ const ProgressBar: React.FC<{
           { width },
         ]}
       >
-        <Flex
-          justifyContent="flex-end"
+        <LinearGradient
+          colors={gradientColors}
+          start={gradientStart}
+          end={gradientEnd}
+          locations={gradientLocations}
+          useAngle={gradientUseAngle}
+          angle={gradientAngle}
+          angleCenter={gradientAngleCenter}
           style={[
             styles.innerBar,
             {
@@ -91,7 +115,7 @@ const ProgressBar: React.FC<{
               {`${complete.toFixed(1)}%`}
             </Text>
           ) : null}
-        </Flex>
+        </LinearGradient>
       </View>
     </View>
   );
