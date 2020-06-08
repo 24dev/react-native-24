@@ -69,6 +69,27 @@ const ProgressBar: React.FC<{
     width = "100%",
   } = props;
 
+  const renderPercentage = () => {
+    if (!percentage) {
+      return null;
+    }
+
+    return (
+      <Text
+        style={[
+          styles.label,
+          {
+            color: "white",
+            marginHorizontal: 6,
+          },
+          complete < 25 ? styles.indentPercentage : {},
+        ]}
+      >
+        {`${complete.toFixed(1)}%`}
+      </Text>
+    );
+  };
+
   return (
     <View style={[containerStyle]}>
       {label ? (
@@ -85,37 +106,37 @@ const ProgressBar: React.FC<{
           { width },
         ]}
       >
-        <LinearGradient
-          colors={gradientColors}
-          start={gradientStart}
-          end={gradientEnd}
-          locations={gradientLocations}
-          useAngle={gradientUseAngle}
-          angle={gradientAngle}
-          angleCenter={gradientAngleCenter}
-          style={[
-            styles.innerBar,
-            {
-              width: `${complete > maxValue ? maxValue : complete}%`,
-              backgroundColor: color,
-            },
-          ]}
-        >
-          {percentage ? (
-            <Text
-              style={[
-                styles.label,
-                {
-                  color: "white",
-                  marginHorizontal: 6,
-                },
-                complete < 25 ? styles.indentPercentage : {},
-              ]}
-            >
-              {`${complete.toFixed(1)}%`}
-            </Text>
-          ) : null}
-        </LinearGradient>
+        {gradientColors.length ? (
+          <LinearGradient
+            colors={gradientColors}
+            start={gradientStart}
+            end={gradientEnd}
+            locations={gradientLocations}
+            useAngle={gradientUseAngle}
+            angle={gradientAngle}
+            angleCenter={gradientAngleCenter}
+            style={[
+              styles.innerBar,
+              {
+                width: `${complete > maxValue ? maxValue : complete}%`,
+              },
+            ]}
+          >
+            {renderPercentage()}
+          </LinearGradient>
+        ) : (
+          <Flex
+            style={[
+              styles.innerBar,
+              {
+                width: `${complete > maxValue ? maxValue : complete}%`,
+                backgroundColor: color,
+              },
+            ]}
+          >
+            {renderPercentage()}
+          </Flex>
+        )}
       </View>
     </View>
   );
