@@ -25,7 +25,7 @@ const Space: React.FC<{
         {
           height: 1,
           width: 1,
-          margin: typeof size === "number" ? size : sizes[size],
+          margin: typeof size === "number" ? size / 2 : sizes[size],
         },
         style,
       ]}
