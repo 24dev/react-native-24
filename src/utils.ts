@@ -91,8 +91,7 @@ export const throttle = (func: any, delay: number) => {
 
 // CHUNK ARRAY
 export function chunkArray(arr: any[], size: number) {
-  // tslint:disable-next-line
-  const newArr = []; /* eslint-disable-line */
+  const newArr = [];
   newArr.push(arr);
   const results = [];
   while (newArr.length) {
@@ -114,6 +113,16 @@ export const sortArrayIntoObjects = (array: Array<any>, property: string) => {
     }
   });
   return obj;
+};
+
+// SHUFFLE ARRAY
+export const shuffleArray = (array: any[]) => {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
 };
 
 // Sort by a given field value
