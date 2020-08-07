@@ -117,12 +117,15 @@ export const sortArrayIntoObjects = (array: Array<any>, property: string) => {
 
 // SHUFFLE ARRAY
 export const shuffleArray = (array: any[]) => {
-  for (var i = array.length - 1; i > 0; i--) {
+  const arr: any[] = [];
+  arr.push(array);
+  for (var i = arr.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
   }
+  return arr;
 };
 
 // Sort by a given field value

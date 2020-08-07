@@ -6,6 +6,6 @@ export declare function useDebounce<A extends any[]>(callback: (...args: A) => v
 export declare const throttle: (func: any, delay: number) => (...args: any) => void;
 export declare function chunkArray(arr: any[], size: number): any[][][];
 export declare const sortArrayIntoObjects: (array: any[], property: string) => any;
-export declare const shuffleArray: (array: any[]) => void;
+export declare const shuffleArray: (array: any[]) => any[];
 export declare const sortBy: (arrayTobeSorted: any[], fieldName: string) => any[];
 //# sourceMappingURL=utils.d.ts.map
