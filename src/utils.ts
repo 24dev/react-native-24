@@ -29,7 +29,7 @@ export const componentWillUnmount = (effect: Function) => {
 
 // DEBOUNCE
 export const debounce = (callback: (...args: any) => void, time: number) => {
-  let timeout;
+  let timeout: any;
 
   return function() {
     const functionCall = () => callback.apply(this, arguments);
@@ -74,9 +74,9 @@ export function useDebounce<A extends any[]>(
 }
 
 // THROTTLE
-export const throttle = (func, delay) => {
+export const throttle = (func: () => void, delay: number) => {
   let inProgress = false;
-  return (...args) => {
+  return (...args: any) => {
     if (inProgress) {
       return;
     }
@@ -103,7 +103,7 @@ export const sortArrayIntoObjects = (array: Array<any>, property: string) => {
   const obj = {};
   array.forEach(item => {
     const objProp = item[property].toLowerCase();
-
+    // eslint disable-next-line
     if (obj[objProp]) {
       obj[objProp] = [...obj[objProp], item];
     } else {

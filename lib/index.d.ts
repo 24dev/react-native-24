@@ -10,5 +10,6 @@ import Avatar from "./Avatar";
 import ProgressBar from "./ProgressBar";
 import Notification from "./Notification";
 import Notify from "./Notify";
-export { Avatar, Text, Card, TextProps, Flex, Button, Space, Spinner, Input, Divider, ProgressBar, Notification, Notify };
+import { useAsyncEffect, sortBy, sortArrayIntoObjects, chunkArray, throttle, debounce, useDebounce, componentDidMount, componentDidUpdate, componentWillUnmount } from "./utils";
+export { Avatar, Text, Card, TextProps, Flex, Button, Space, Spinner, Input, Divider, ProgressBar, Notification, Notify, useAsyncEffect, componentDidUpdate, componentWillUnmount, debounce, componentDidMount, useDebounce, throttle, chunkArray, sortArrayIntoObjects, sortBy };
 //# sourceMappingURL=index.d.ts.map
