@@ -10,6 +10,18 @@ import Avatar from "./Avatar";
 import ProgressBar from "./ProgressBar";
 import Notification from "./Notification";
 import Notify from "./Notify";
+import {
+  useAsyncEffect,
+  sortBy,
+  sortArrayIntoObjects,
+  chunkArray,
+  throttle,
+  debounce,
+  useDebounce,
+  componentDidMount,
+  componentDidUpdate,
+  componentWillUnmount
+} from "./utils";
 
 export {
   Avatar,
@@ -24,5 +36,16 @@ export {
   Divider,
   ProgressBar,
   Notification,
-  Notify
+  Notify,
+  // Functions
+  useAsyncEffect,
+  componentDidUpdate,
+  componentWillUnmount,
+  debounce,
+  componentDidMount,
+  useDebounce,
+  throttle,
+  chunkArray,
+  sortArrayIntoObjects,
+  sortBy
 };
