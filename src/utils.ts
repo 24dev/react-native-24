@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+/* tslint:disable */
 
 // ASYNC EFFECT
 export const useAsyncEffect = (effect: Function, inputs: any[]) => {
@@ -28,16 +29,16 @@ export const componentWillUnmount = (effect: Function) => {
 };
 
 // DEBOUNCE
-export const debounce = (callback: (...args: any) => void, time: number) => {
-  let timeout: any;
+// export const debounce = (callback: (...args: any) => void, time: number) => {
+//   let timeout: any;
 
-  return function() {
-    const functionCall = () => callback.apply(this, arguments);
+//   return function() {
+//     const functionCall = () => callback.apply(this, arguments);
 
-    clearTimeout(timeout);
-    timeout = setTimeout(functionCall, time);
-  };
-};
+//     clearTimeout(timeout);
+//     timeout = setTimeout(functionCall, time);
+//   };
+// };
 
 export function useDebounce<A extends any[]>(
   callback: (...args: A) => void,
@@ -74,7 +75,7 @@ export function useDebounce<A extends any[]>(
 }
 
 // THROTTLE
-export const throttle = (func: () => void, delay: number) => {
+export const throttle = (func: any, delay: number) => {
   let inProgress = false;
   return (...args: any) => {
     if (inProgress) {
@@ -89,8 +90,10 @@ export const throttle = (func: () => void, delay: number) => {
 };
 
 // CHUNK ARRAY
-export function chunkArray(arr: Array<any>, size: number) {
-  const newArr = [...arr];
+export function chunkArray(arr: any[], size: number) {
+  // tslint:disable-next-line
+  const newArr = []; /* eslint-disable-line */
+  newArr.push(arr);
   const results = [];
   while (newArr.length) {
     results.push(newArr.splice(0, size));
@@ -100,7 +103,7 @@ export function chunkArray(arr: Array<any>, size: number) {
 
 // SORT ARRAY
 export const sortArrayIntoObjects = (array: Array<any>, property: string) => {
-  const obj = {};
+  const obj: any = {};
   array.forEach(item => {
     const objProp = item[property].toLowerCase();
     // eslint disable-next-line
@@ -114,8 +117,8 @@ export const sortArrayIntoObjects = (array: Array<any>, property: string) => {
 };
 
 // Sort by a given field value
-export const sortBy = (arrayTobeSorted, fieldName) => {
-  const sorter = (a, b) => b[fieldName] - a[fieldName];
+export const sortBy = (arrayTobeSorted: any[], fieldName: string) => {
+  const sorter = (a: any, b: any) => b[fieldName] - a[fieldName];
 
   return arrayTobeSorted.sort(sorter);
 };
