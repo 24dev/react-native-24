@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, View, TextStyle, ViewStyle } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+
 import { Text, Flex, Space } from "./";
 
 const styles = StyleSheet.create({
@@ -9,35 +11,45 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
     zIndex: 2,
     borderRadius: 4,
-    overflow: "hidden"
+    overflow: "hidden",
   },
   label: {
     fontSize: 14,
-    color: "lightgrey"
+    color: "lightgrey",
   },
   innerBar: {
     position: "absolute",
     top: 0,
     left: 0,
     bottom: 0,
-    borderRadius: 4
+    borderRadius: 4,
+    flexDirection: "row",
+    justifyContent: "flex-end",
   },
   indentPercentage: {
     position: "absolute",
-    left: "105%"
-  }
+    left: "105%",
+  },
 });
 
 const ProgressBar: React.FC<{
   complete: number;
-  maxValue: number;
+  maxValue?: number;
   color?: string;
   percentage?: boolean;
   label?: string;
   labelStyle?: TextStyle;
   containerStyle?: ViewStyle;
+  barStyle?: ViewStyle;
   width?: number | string;
-}> = props => {
+  gradientColors?: string[];
+  gradientStart?: { x: number; y: number };
+  gradientEnd?: { x: number; y: number };
+  gradientLocations?: number[];
+  gradientUseAngle?: boolean;
+  gradientAngle?: number;
+  gradientAngleCenter?: { x: number; y: number };
+}> = (props) => {
   const {
     complete,
     maxValue = 100,
@@ -46,8 +58,37 @@ const ProgressBar: React.FC<{
     label = "",
     labelStyle = {},
     containerStyle = {},
-    width = "100%"
+    gradientColors = [],
+    gradientStart,
+    gradientEnd,
+    gradientLocations,
+    gradientUseAngle,
+    gradientAngle,
+    gradientAngleCenter,
+    barStyle = {},
+    width = "100%",
   } = props;
+
+  const renderPercentage = () => {
+    if (!percentage) {
+      return null;
+    }
+
+    return (
+      <Text
+        style={[
+          styles.label,
+          {
+            color: "white",
+            marginHorizontal: 6,
+          },
+          complete < 25 ? styles.indentPercentage : {},
+        ]}
+      >
+        {`${complete.toFixed(1)}%`}
+      </Text>
+    );
+  };
 
   return (
     <View style={[containerStyle]}>
@@ -58,33 +99,44 @@ const ProgressBar: React.FC<{
         </React.Fragment>
       ) : null}
       <View
-        style={[styles.container, percentage ? { height: 14 } : {}, { width }]}
+        style={[
+          styles.container,
+          barStyle,
+          percentage ? { height: 14 } : {},
+          { width },
+        ]}
       >
-        <Flex
-          justifyContent="flex-end"
-          style={[
-            styles.innerBar,
-            {
-              width: `${complete > maxValue ? maxValue : complete}%`,
-              backgroundColor: color
-            }
-          ]}
-        >
-          {percentage ? (
-            <Text
-              style={[
-                styles.label,
-                {
-                  color: "white",
-                  marginHorizontal: 6
-                },
-                complete < 25 ? styles.indentPercentage : {}
-              ]}
-            >
-              {`${complete.toFixed(1)}%`}
-            </Text>
-          ) : null}
-        </Flex>
+        {gradientColors.length ? (
+          <LinearGradient
+            colors={gradientColors}
+            start={gradientStart}
+            end={gradientEnd}
+            locations={gradientLocations}
+            useAngle={gradientUseAngle}
+            angle={gradientAngle}
+            angleCenter={gradientAngleCenter}
+            style={[
+              styles.innerBar,
+              {
+                width: `${complete > maxValue ? maxValue : complete}%`,
+              },
+            ]}
+          >
+            {renderPercentage()}
+          </LinearGradient>
+        ) : (
+          <Flex
+            style={[
+              styles.innerBar,
+              {
+                width: `${complete > maxValue ? maxValue : complete}%`,
+                backgroundColor: color,
+              },
+            ]}
+          >
+            {renderPercentage()}
+          </Flex>
+        )}
       </View>
     </View>
   );

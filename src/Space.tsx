@@ -10,14 +10,14 @@ const sizes: Record<SizeTypes, number> = {
   md: 8,
   lg: 12,
   xl: 24,
-  xxl: 48
+  xxl: 48,
 };
 
 const Space: React.FC<{
-  size?: SizeTypes;
+  size?: SizeTypes | number;
   children?: any;
   style?: ViewStyle;
-}> = props => {
+}> = (props) => {
   const { size = "md", children, style } = props;
   return (
     <View
@@ -25,9 +25,9 @@ const Space: React.FC<{
         {
           height: 1,
           width: 1,
-          margin: sizes[size]
+          margin: typeof size === "number" ? size / 2 : sizes[size],
         },
-        style
+        style,
       ]}
     >
       {children}
