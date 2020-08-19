@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, Animated, View, Dimensions, Text } from "react-native";
+import {
+  StyleSheet,
+  Animated,
+  View,
+  Dimensions,
+  Text,
+  ViewStyle,
+} from "react-native";
 import { PositionTypes } from "./Notify";
 
 const styles = StyleSheet.create({
@@ -15,11 +22,11 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1
+      height: 1,
     },
     shadowRadius: 3,
-    shadowOpacity: 0.22
-  }
+    shadowOpacity: 0.22,
+  },
 });
 
 const maxWidth = Dimensions.get("window").width;
@@ -36,10 +43,17 @@ interface State {
   };
   position?: PositionTypes;
 }
-class Notification extends React.Component<{ text: any }, State> {
+
+export interface NotificationProps {
+  text: any;
+  cardStyle: ViewStyle;
+  renderCard: () => React.ReactNode;
+}
+
+class Notification extends React.Component<NotificationProps, State> {
   animatedValue: Animated.Value;
 
-  constructor(props: any) {
+  constructor(props: NotificationProps) {
     super(props);
     this.animatedValue = new Animated.Value(-150);
     this.state = {
@@ -50,8 +64,8 @@ class Notification extends React.Component<{ text: any }, State> {
       iconProps: {
         name: "check-circle",
         color: "#272727",
-        size: 25
-      }
+        size: 25,
+      },
     };
   }
 
@@ -67,7 +81,7 @@ class Notification extends React.Component<{ text: any }, State> {
     this.setState({ modalShown: true, message, icon, iconProps, position });
     Animated.timing(this.animatedValue, {
       toValue: 0,
-      duration: 350
+      duration: 350,
     }).start(() => this.close(time));
   };
 
@@ -76,7 +90,7 @@ class Notification extends React.Component<{ text: any }, State> {
     setTimeout(() => {
       Animated.timing(this.animatedValue, {
         toValue: -150,
-        duration: 350
+        duration: 350,
       }).start();
     }, time);
   };
@@ -96,8 +110,9 @@ class Notification extends React.Component<{ text: any }, State> {
 
   render() {
     const { color, message, icon, iconProps, position = "top" } = this.state;
+    const { text: TextComponent, cardStyle, renderCard } = this.props;
     const Icon = icon;
-    const TextComponent = this.props.text;
+
     return (
       <Animated.View
         style={{
@@ -107,25 +122,29 @@ class Notification extends React.Component<{ text: any }, State> {
           alignSelf: this.getAlign(position),
           maxWidth,
           paddingHorizontal: 50,
-          zIndex: 10
+          zIndex: 10,
         }}
       >
-        <View style={styles.card}>
-          {Icon && (
-            <View style={{ marginRight: 14 }}>
-              <Icon
-                size={iconProps.size}
-                name={iconProps.name}
-                color={iconProps.color}
-              />
-            </View>
-          )}
-          {TextComponent ? (
-            <TextComponent style={{ color }}>{message}</TextComponent>
-          ) : (
-            <Text style={{ color }}>{message}</Text>
-          )}
-        </View>
+        {renderCard !== undefined ? (
+          renderCard()
+        ) : (
+          <View style={[styles.card, cardStyle]}>
+            {Icon && (
+              <View style={{ marginRight: 14 }}>
+                <Icon
+                  size={iconProps.size}
+                  name={iconProps.name}
+                  color={iconProps.color}
+                />
+              </View>
+            )}
+            {TextComponent ? (
+              <TextComponent style={{ color }}>{message}</TextComponent>
+            ) : (
+              <Text style={{ color }}>{message}</Text>
+            )}
+          </View>
+        )}
       </Animated.View>
     );
   }
