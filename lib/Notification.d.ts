@@ -1,5 +1,5 @@
 import React from "react";
-import { Animated } from "react-native";
+import { Animated, ViewStyle } from "react-native";
 import { PositionTypes } from "./Notify";
 interface State {
     modalShown: boolean;
@@ -13,11 +13,14 @@ interface State {
     };
     position?: PositionTypes;
 }
-declare class Notification extends React.Component<{
+export interface NotificationProps {
     text: any;
-}, State> {
+    cardStyle: ViewStyle;
+    renderCard: () => React.ReactNode;
+}
+declare class Notification extends React.Component<NotificationProps, State> {
     animatedValue: Animated.Value;
-    constructor(props: any);
+    constructor(props: NotificationProps);
     open: (message: string, time?: number, position?: PositionTypes, icon?: any, iconProps?: {
         name?: string | undefined;
         color?: string | undefined;

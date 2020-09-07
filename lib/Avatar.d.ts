@@ -1,9 +1,13 @@
-import React from "react";
+import { FC } from "react";
 import { ViewStyle } from "react-native";
-declare const Avatar: React.FC<{
-    source: any;
-    style?: ViewStyle;
-    size?: "xxs" | "xs" | "sm" | "md" | "lg";
-}>;
+export interface AvatarProps {
+    src: string | null;
+    size: "base" | "ring" | "xxs" | "xs" | "sm" | "md" | "lg";
+    style: ViewStyle;
+    skeletonLoading: boolean;
+    mainColor: string;
+    secondaryColor: string;
+}
+declare const Avatar: FC<AvatarProps>;
 export default Avatar;
 //# sourceMappingURL=Avatar.d.ts.map

@@ -10,6 +10,10 @@ import Avatar from "./Avatar";
 import ProgressBar from "./ProgressBar";
 import Notification from "./Notification";
 import Notify from "./Notify";
+import Icon from "./Icon";
+import Image from "./Image";
+import Select from "./Select";
+import SkeletonLoader from "./SkeletonLoader";
 import {
   useAsyncEffect,
   sortBy,
@@ -21,7 +25,7 @@ import {
   useDebounce,
   componentDidMount,
   componentDidUpdate,
-  componentWillUnmount
+  componentWillUnmount,
 } from "./utils";
 
 export {
@@ -31,13 +35,17 @@ export {
   TextProps,
   Flex,
   Button,
-  Space,
-  Spinner,
   Input,
+  Icon,
+  Image,
   Divider,
   ProgressBar,
   Notification,
   Notify,
+  Select,
+  Space,
+  Spinner,
+  SkeletonLoader,
   // Functions
   useAsyncEffect,
   componentDidUpdate,
@@ -49,5 +57,5 @@ export {
   throttle,
   chunkArray,
   sortArrayIntoObjects,
-  sortBy
+  sortBy,
 };

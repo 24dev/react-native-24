@@ -1,0 +1,1 @@
+{"version":3,"file":"SkeletonLoader.d.ts","sourceRoot":"","sources":["../src/SkeletonLoader.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,OAAO,EAAE,QAAQ,EAAE,MAAM,cAAc,CAAC;AAExC,cAAM,cAAe,SAAQ,KAAK,CAAC,SAAS,CAAC,EAAE,CAAC;IAC9C,eAAe,EAAE,QAAQ,CAAC,KAAK,CAAC;gBAEpB,KAAK,EAAE,EAAE;IAKrB,iBAAiB;IAIjB,oBAAoB,4BAOlB;IAEF,MAAM;CAQP;AAED,eAAe,cAAc,CAAC"}
