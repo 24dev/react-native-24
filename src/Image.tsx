@@ -6,7 +6,7 @@ export interface ImageProps {
   width: number;
   style: ImageStyle | ImageStyle[];
   source: ImageURISource;
-  onLoad: (args: any) => any;
+  onLoad?: (args: any) => any;
 }
 
 export interface ImageState {
@@ -15,7 +15,7 @@ export interface ImageState {
 
 class Wrap extends React.PureComponent<ImageProps, ImageState> {
   state = {
-    height: 150
+    height: 150,
   };
 
   handleLoad = (tempWidth: number, tempHeight: number) => {
@@ -23,7 +23,7 @@ class Wrap extends React.PureComponent<ImageProps, ImageState> {
     const ratio = tempHeight / tempWidth;
     const height = width * ratio;
     this.setState({
-      height
+      height,
     });
   };
 
@@ -35,15 +35,15 @@ class Wrap extends React.PureComponent<ImageProps, ImageState> {
         style={[
           {
             width,
-            height
+            height,
           },
-          style
+          style,
         ]}
         source={{
           uri: source.uri,
-          priority: FastImage.priority.high
+          priority: FastImage.priority.high,
         }}
-        onLoad={(e: any) => {
+        onLoad={(e) => {
           this.handleLoad(e.nativeEvent.width, e.nativeEvent.height);
           onLoad(e);
         }}
