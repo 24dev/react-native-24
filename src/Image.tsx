@@ -3,7 +3,7 @@ import FastImage from "react-native-fast-image";
 import { ImageStyle, ImageURISource } from "react-native";
 
 export interface ImageProps {
-  width: number;
+  width?: number;
   style: ImageStyle | ImageStyle[];
   source: ImageURISource;
   onLoad: (args: any) => any;
@@ -15,16 +15,19 @@ export interface ImageState {
 
 class Wrap extends React.PureComponent<ImageProps, ImageState> {
   state = {
-    height: 150
+    height: 150,
   };
 
   handleLoad = (tempWidth: number, tempHeight: number) => {
     const { width } = this.props;
-    const ratio = tempHeight / tempWidth;
-    const height = width * ratio;
-    this.setState({
-      height
-    });
+
+    if (width) {
+      const ratio = tempHeight / tempWidth;
+      const height = width * ratio;
+      this.setState({
+        height,
+      });
+    }
   };
 
   render() {
@@ -35,13 +38,13 @@ class Wrap extends React.PureComponent<ImageProps, ImageState> {
         style={[
           {
             width,
-            height
+            height,
           },
-          style
+          style,
         ]}
         source={{
           uri: source.uri,
-          priority: FastImage.priority.high
+          priority: FastImage.priority.high,
         }}
         onLoad={(e: any) => {
           this.handleLoad(e.nativeEvent.width, e.nativeEvent.height);
