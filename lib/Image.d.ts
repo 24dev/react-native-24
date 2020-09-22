@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageStyle, ImageURISource } from "react-native";
 export interface ImageProps {
-    width: number;
+    width?: number;
     style: ImageStyle | ImageStyle[];
     source: ImageURISource;
     onLoad?: (args: any) => any;
