@@ -4,7 +4,7 @@ export interface ImageProps {
     width: number;
     style: ImageStyle | ImageStyle[];
     source: ImageURISource;
-    onLoad: (args: any) => any;
+    onLoad?: (args: any) => any;
 }
 export interface ImageState {
     height: number;

@@ -6,7 +6,7 @@ export interface ImageProps {
   width?: number;
   style: ImageStyle | ImageStyle[];
   source: ImageURISource;
-  onLoad: (args: any) => any;
+  onLoad?: (args: any) => any;
 }
 
 export interface ImageState {
@@ -46,7 +46,7 @@ class Wrap extends React.PureComponent<ImageProps, ImageState> {
           uri: source.uri,
           priority: FastImage.priority.high,
         }}
-        onLoad={(e: any) => {
+        onLoad={(e) => {
           this.handleLoad(e.nativeEvent.width, e.nativeEvent.height);
           onLoad(e);
         }}

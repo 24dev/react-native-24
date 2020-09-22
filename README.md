@@ -137,6 +137,17 @@ size?: number;
 style?: ViewStyle;
 ```
 
+
+<b>SkeletonLoader</b>
+
+```jsx
+<SkeletonLoader>
+  <Text>Custom text</Text>
+</SkeletonLoader>
+
+children: any;
+```
+
 <b>Input</b> (TextInput)
 
 ```jsx
@@ -161,6 +172,17 @@ style?: ViewStyle;
 size?: "xxs" | "xs" | "sm" | "md" | "lg";
 ```
 
+<b>Image</b>
+
+```jsx
+<Image source="image URI source" width={100} />
+
+width: number;
+style: ImageStyle | ImageStyle[];
+source: ImageURISource;
+onLoad?: (args: any) => any;
+```
+
 <b>Card</b>
 
 ```jsx
@@ -171,6 +193,35 @@ style?: ViewStyle;
 noPadding?: boolean;
 ```
 
+<b>Icon</b>
+
+```jsx
+<Icon name="camera" size={20} color="#fff" />
+
+name: string;
+size?: number;
+color?: string;
+```
+
+Inherits props from <i>[react-native-vector-icons/Icon](https://github.com/oblador/react-native-vector-icons#icon-component)</i>
+
+
+<b>Select</b>
+
+```jsx
+<Select
+  onValueChange={(value) => console.log(value)}
+  items={[
+    { label: "Football", value: "football" },
+    { label: "Baseball", value: "baseball" },
+    { label: "Hockey", value: "hockey" },
+  ]}
+/>
+```
+
+Inherits props from <i>[react-native-picker-select](https://github.com/lawnstarter/react-native-picker-select)</i>
+
+
 <b>Notification</b> (for in-app toasts)
 
 ```jsx
@@ -178,7 +229,7 @@ import { Notification, Notify } from "react-native-24";
 import { Text } from "...";
 // Use at the root level of your app. Then you can call Notify.open elsewhere.
 <Notification
-  ref={ref => {
+  ref={(ref) => {
     Notify.setNotification(ref);
   }}
   text={Text} // use whatever text component you want (so you can have custom fonts)
