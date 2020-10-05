@@ -1,11 +1,10 @@
-import React from "react";
-import FastImage from "react-native-fast-image";
-import { ImageStyle, ImageURISource } from "react-native";
+import React, { FC, useState } from "react";
+import FastImage, { FastImageProps } from "react-native-fast-image";
+import { ImageStyle } from "react-native";
 
-export interface ImageProps {
+export interface ImageProps extends FastImageProps {
   width?: number;
-  style: ImageStyle | ImageStyle[];
-  source: ImageURISource;
+  style?: ImageStyle | ImageStyle[];
   onLoad?: (args: any) => any;
 }
 
@@ -13,47 +12,38 @@ export interface ImageState {
   height: number;
 }
 
-class Wrap extends React.PureComponent<ImageProps, ImageState> {
-  state = {
-    height: 150,
-  };
+const Wrap: FC<ImageProps> = ({ style, width, onLoad, ...rest }) => {
+  const [height, setHeight] = useState(150);
 
-  handleLoad = (tempWidth: number, tempHeight: number) => {
-    const { width } = this.props;
-
+  const handleLoad = (tempWidth: number, tempHeight: number) => {
     if (width) {
       const ratio = tempHeight / tempWidth;
       const height = width * ratio;
-      this.setState({
-        height,
-      });
+
+      setHeight(height);
     }
   };
 
-  render() {
-    const { width, source, onLoad = () => {}, style = {} } = this.props;
-    const { height } = this.state;
-    return (
-      <FastImage
-        style={[
-          {
-            width,
-            height,
-          },
-          style,
-        ]}
-        source={{
-          uri: source.uri,
-          priority: FastImage.priority.high,
-        }}
-        onLoad={(e) => {
-          this.handleLoad(e.nativeEvent.width, e.nativeEvent.height);
+  return (
+    <FastImage
+      style={[
+        {
+          width,
+          height,
+        },
+        style,
+      ]}
+      onLoad={(e: any) => {
+        handleLoad(e.nativeEvent.width, e.nativeEvent.height);
+
+        if (!!onLoad) {
           onLoad(e);
-        }}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-    );
-  }
-}
+        }
+      }}
+      resizeMode={FastImage.resizeMode.cover}
+      {...rest}
+    />
+  );
+};
 
 export default Wrap;
