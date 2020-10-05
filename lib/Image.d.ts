@@ -1,20 +1,14 @@
-import React from "react";
-import { ImageStyle, ImageURISource } from "react-native";
-export interface ImageProps {
+import { FC } from "react";
+import { FastImageProps } from "react-native-fast-image";
+import { ImageStyle } from "react-native";
+export interface ImageProps extends FastImageProps {
     width?: number;
-    style: ImageStyle | ImageStyle[];
-    source: ImageURISource;
+    style?: ImageStyle | ImageStyle[];
     onLoad?: (args: any) => any;
 }
 export interface ImageState {
     height: number;
 }
-declare class Wrap extends React.PureComponent<ImageProps, ImageState> {
-    state: {
-        height: number;
-    };
-    handleLoad: (tempWidth: number, tempHeight: number) => void;
-    render(): JSX.Element;
-}
+declare const Wrap: FC<ImageProps>;
 export default Wrap;
 //# sourceMappingURL=Image.d.ts.map
